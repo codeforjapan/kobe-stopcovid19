@@ -4,6 +4,9 @@
       :title="$t('検査陽性者の状況')"
       :title-id="'details-of-confirmed-cases'"
       :date="Data.patients.date"
+      :url="
+        'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html'
+      "
     >
       <confirmed-cases-table
         :aria-label="$t('検査陽性者の状況')"

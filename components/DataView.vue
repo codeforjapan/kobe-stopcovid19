@@ -32,7 +32,7 @@
               target="_blank"
               rel="noopener"
             >
-              {{ $t('オープンデータを入手') }}
+              {{ $t('データへのリンク') }}
               <v-icon
                 class="ExternalLinkIcon"
                 size="15"
