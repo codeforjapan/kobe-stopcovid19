@@ -7,7 +7,9 @@
       :chart-option="{}"
       :date="Data.patients.date"
       :info="sumInfoOfPatients"
-      :url="'https://catalog.data.metro.tokyo.lg.jp/dataset/t000010d0000000068'"
+      :url="
+        'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html'
+      "
     />
   </v-col>
 </template>

@@ -7,7 +7,9 @@
       :chart-data="patientsGraph"
       :date="Data.patients.date"
       :unit="$t('人')"
-      :url="'https://catalog.data.metro.tokyo.lg.jp/dataset/t000010d0000000068'"
+      :url="
+        'https://www.city.kobe.lg.jp/a57337/kenko/health/corona_zokusei.html'
+      "
     />
   </v-col>
 </template>

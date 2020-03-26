@@ -1,8 +1,8 @@
 <template>
-  <data-view :title="title" :title-id="titleId" :date="date">
+  <data-view :title="title" :title-id="titleId" :date="date" :url="url">
     <template v-slot:button>
-      <ul :class="$style.GraphDesc">
-        <li>
+      <ul v-if="desc" :class="$style.GraphDesc">
+        <!--<li>
           {{ $t('（注）医療機関が保険適用で行った検査は含まれていない') }}
         </li>
         <li>
@@ -14,7 +14,10 @@
               '（注）速報値として公開するものであり、後日確定データとして修正される場合あり'
             )
           }}
-        </li>
+        </li>-->
+        {{
+          desc
+        }}
       </ul>
       <data-selector
         v-model="dataKind"
@@ -62,7 +65,7 @@ import { TranslateResult } from 'vue-i18n'
 import DataView from '@/components/DataView.vue'
 import DataSelector from '@/components/DataSelector.vue'
 import DataViewBasicInfoPanel from '@/components/DataViewBasicInfoPanel.vue'
-import { double as colors } from '@/utils/colors'
+import { doubleReverse as colors } from '@/utils/colors'
 
 interface HTMLElementEvent<T extends HTMLElement> extends Event {
   currentTarget: T
@@ -131,6 +134,8 @@ type Props = {
   labels: string[]
   dataLabels: string[] | TranslateResult[]
   unit: string
+  url: string
+  desc: string
 }
 
 const options: ThisTypedComponentOptionsWithRecordProps<
@@ -182,6 +187,16 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     unit: {
       type: String,
+      default: ''
+    },
+    url: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    desc: {
+      type: String,
+      required: false,
       default: ''
     }
   },
