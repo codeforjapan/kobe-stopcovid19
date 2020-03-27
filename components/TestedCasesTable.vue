@@ -34,9 +34,9 @@
         <li :class="[$style.box, $style.inside]">
           <div :class="$style.pillar">
             <div :class="$style.content">
-              <span>{{ $t('県内発生') }}</span>
+              <span>{{ $t('市内発生') }}</span>
               <span>
-                <strong>{{ 県内発生件数 }}</strong>
+                <strong>{{ 市内発生件数 }}</strong>
                 <span :class="$style.unit">{{ $t('件.tested') }}</span>
               </span>
             </div>
@@ -75,7 +75,7 @@ export default Vue.extend({
       type: Number,
       required: true
     },
-    県内発生件数: {
+    市内発生件数: {
       type: Number,
       required: true
     },
