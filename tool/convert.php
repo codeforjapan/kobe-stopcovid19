@@ -225,7 +225,7 @@ function readInspectionsSummary(array $inspections) : array
   return [
     'date' => $inspections['date'],
     'data' => [
-      '県内' => $inspections['data']->map(function ($row) {
+      '市内' => $inspections['data']->map(function ($row) {
         return str_replace(' ', '', $row['（小計①）']);
       }),
       'その他' => $inspections['data']->map(function ($row) {
