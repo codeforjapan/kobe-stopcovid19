@@ -1,5 +1,5 @@
 <template>
-  <div class="Parent">
+  <div class="Guide">
     <page-header class="mb-3">
       {{ $t('感染症対策について') }}
     </page-header>
