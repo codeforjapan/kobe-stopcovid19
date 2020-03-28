@@ -19,6 +19,11 @@
       :text="$t('自分や家族の症状に不安や心配があればまずは電話相談をどうぞ')"
       :btn-text="$t('相談の手順を見る')"
     />
+    <static-info
+      class="mb-4"
+      url="https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus.html"
+      :text="$t('市民の皆さまへ')"
+    />
     <v-row class="DataBlock">
       <confirmed-cases-details-card />
       <!--<tested-cases-details-card />-->
