@@ -155,10 +155,12 @@ export default Vue.extend({
           link: this.localePath('/guide')
         },
         {
+          icon: 'mdi-phone-in-talk',
           title: this.$t('神戸市電話相談窓口'),
           link: this.localePath('/contacts')
         },
         {
+          icon: 'mdi-message-text',
           title: this.$t('市長からのメッセージ'),
           link:
             'https://www.city.kobe.lg.jp/a57337/kenko/health/corona_shichokoment2.html',
