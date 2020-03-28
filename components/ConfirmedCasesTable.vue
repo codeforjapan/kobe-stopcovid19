@@ -299,6 +299,7 @@ $default-boxdiff: 35px;
 
   > span {
     display: block;
+    width: 100%;
 
     @include font-size(16);
 

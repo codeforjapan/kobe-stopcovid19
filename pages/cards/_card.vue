@@ -47,6 +47,15 @@
         this.$route.params.card == 'number-of-reports-to-health-center-desk'
       "
     />
+    <shinjuku-st-map-card
+      v-else-if="this.$route.params.card == 'shinjuku-st-heatmap'"
+    />
+    <tokyo-st-map-card
+      v-else-if="this.$route.params.card == 'tokyo-st-heatmap'"
+    />
+    <tokyo-city-map-card
+      v-else-if="this.$route.params.card == 'tokyo-city-heatmap'"
+    />
   </div>
 </template>
 

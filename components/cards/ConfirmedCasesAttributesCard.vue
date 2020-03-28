@@ -10,6 +10,7 @@
       :url="
         'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html'
       "
+      :source="$t('オープンデータを入手')"
     />
   </v-col>
 </template>
@@ -53,6 +54,8 @@ export default {
 
       if (row['年代'] === '10歳未満') {
         row['年代'] = this.$t('10歳未満')
+      } else if (row['年代'] === '不明') {
+        row['年代'] = this.$t('不明')
       } else {
         const age = row['年代'].substring(0, 2)
         row['年代'] = this.$t('{age}代', { age })

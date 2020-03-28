@@ -34,6 +34,11 @@
       <chiyoda-visitors-card />-->
       <health-center-desk-reports-number-card />
     </v-row>
+    <v-divider />
+    <v-row class="DataBlock">
+      <shinjuku-st-map-card />
+      <tokyo-st-map-card />
+    </v-row>
   </div>
 </template>
 
