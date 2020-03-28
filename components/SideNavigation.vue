@@ -166,12 +166,12 @@ export default Vue.extend({
         },
         {
           icon: 'ParentIcon',
-          title: this.$t('お子様をお持ちの皆様へ'),
+          title: this.$t('お子様をお持ちの皆さまへ'),
           link: 'https://www.city.kobe.lg.jp/a57337/kenko/coc.html'
         },
         {
           icon: 'mdi-account-multiple',
-          title: this.$t('市民の皆様へ'),
+          title: this.$t('市民の皆さまへ'),
           link:
             'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus.html'
         },
