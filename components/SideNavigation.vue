@@ -107,7 +107,7 @@
           </a>
           {{ $t('の下に提供されています。') }}
           <br />
-          2020 Tokyo Metropolitan Government
+          2020 City of Kobe
         </small>
       </footer>
     </div>
@@ -157,10 +157,12 @@ export default Vue.extend({
           link: this.localePath('/guide')
         },
         {
+          icon: 'mdi-phone-in-talk',
           title: this.$t('神戸市電話相談窓口'),
           link: this.localePath('/contacts')
         },
         {
+          icon: 'mdi-message-text',
           title: this.$t('市長からのメッセージ'),
           link:
             'https://www.city.kobe.lg.jp/a57337/kenko/health/corona_shichokoment2.html',
@@ -168,12 +170,12 @@ export default Vue.extend({
         },
         {
           icon: 'ParentIcon',
-          title: this.$t('お子様をお持ちの皆様へ'),
+          title: this.$t('お子様をお持ちの皆さまへ'),
           link: 'https://www.city.kobe.lg.jp/a57337/kenko/coc.html'
         },
         {
           icon: 'mdi-account-multiple',
-          title: this.$t('市民の皆様へ'),
+          title: this.$t('市民の皆さまへ'),
           link:
             'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus.html'
         },
