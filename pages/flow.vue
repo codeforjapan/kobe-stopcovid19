@@ -21,7 +21,7 @@
           </v-icon>
         </a>
       </div>
-      <div class="only-pc">
+      <div class="only-pc" aria-hidden="true">
         <flow-pc />
       </div>
       <div class="only-sp">
@@ -122,7 +122,7 @@ export default Vue.extend({
 
 @include largerThan($medium) {
   .only-sp {
-    display: none;
+    @include visually-hidden;
   }
 
   .only-pc {
@@ -131,10 +131,6 @@ export default Vue.extend({
 }
 
 @include lessThan($medium) {
-  .only-sp {
-    display: block;
-  }
-
   .only-pc {
     display: none;
   }
