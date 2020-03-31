@@ -79,7 +79,21 @@
         <li :class="[$style.box, $style.recovered]">
           <div :class="$style.pillar">
             <div :class="$style.content">
-              <span>{{ $t('退院') }}</span>
+              <!-- disableした理由: 余計な空白を入れないようにHTMLを調整済み -->
+              <!-- eslint-disable prettier/prettier-->
+              <span>
+                {{ $t('治癒確認') }}
+                <br />(<i18n
+                  tag="span"
+                  :class="$style.recoveredText"
+                  path="{discharged}等"
+                >
+                  <template v-slot:discharged>
+                    <span :class="$style.recoveredTextLarger">{{ $t('退院') }}</span>
+                  </template>
+                </i18n>)
+              </span>
+              <!-- eslint-enable prettier/prettier-->
               <span>
                 <strong>{{ 退院 }}</strong>
                 <span :class="$style.unit">{{ $t('人') }}</span>
@@ -318,6 +332,14 @@ $default-boxdiff: 35px;
   span.unit {
     @include font-size(16);
   }
+
+  .recoveredText {
+    @include font-size(12);
+
+    &Larger {
+      @include font-size(16);
+    }
+  }
 }
 
 @function px2vw($px, $vw: 0) {
@@ -350,6 +372,14 @@ $default-boxdiff: 35px;
 
     span.unit {
       @include font-size($fz);
+    }
+
+    .recoveredText {
+      @include font-size($fz - 4);
+
+      &Larger {
+        @include font-size($fz);
+      }
     }
   }
 
