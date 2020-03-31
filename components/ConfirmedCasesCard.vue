@@ -1,9 +1,11 @@
 <template>
   <data-view :title="title" :title-id="titleId" :date="date" :url="url">
     <template v-slot:button>
-      <p :class="$style.note">
-        {{ $t('（注）市外で感染が発覚した人は含まれていない') }}
-      </p>
+      <ul :class="$style.note">
+        <li>
+          {{ $t('（注）市外で感染が発覚した人は含まれていない') }}
+        </li>
+      </ul>
     </template>
     <slot />
   </data-view>
@@ -13,8 +15,13 @@
 .note {
   margin-top: 10px;
   margin-bottom: 0;
+  padding-left: 0 !important;
   font-size: 12px;
   color: $gray-3;
+
+  > li {
+    list-style-type: none;
+  }
 }
 </style>
 
