@@ -143,7 +143,7 @@ export default Vue.extend({
       return [
         {
           icon: 'mdi-chart-timeline-variant',
-          title: this.$t('市内の最新感染動向'),
+          title: this.$t('神戸市市内の最新感染動向'),
           link: this.localePath('/')
         },
         {
