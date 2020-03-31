@@ -3,7 +3,7 @@
     <page-header class="mb-3">
       {{ $t('お問い合わせ先一覧') }}
     </page-header>
-    <div class="Contacts-Card">
+    <StaticCard class="Contacts-Card">
       <table class="Contacts-Card-Table" v-bind="tableAttrs">
         <thead>
           <tr>
@@ -119,7 +119,7 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </StaticCard>
   </div>
 </template>
 
@@ -127,10 +127,12 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import PageHeader from '@/components/PageHeader.vue'
+import StaticCard from '@/components/StaticCard.vue'
 
 export default Vue.extend({
   components: {
-    PageHeader
+    PageHeader,
+    StaticCard
   },
   data() {
     return {
