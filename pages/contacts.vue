@@ -4,6 +4,9 @@
       {{ $t('お問い合わせ先一覧') }}
     </page-header>
     <StaticCard class="Contacts-Card">
+      <h3>
+        {{ $t('神戸市電話相談窓口（24時間受付: 多言語対応可）') }}
+      </h3>
       <table class="Contacts-Card-Table" v-bind="tableAttrs">
         <thead>
           <tr>
