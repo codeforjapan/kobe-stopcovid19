@@ -7,7 +7,7 @@
       <h3>
         {{ $t('神戸市電話相談窓口（24時間受付: 多言語対応可）') }}
       </h3>
-      <table class="Contacts-Table" v-bind="tableAttrs">
+      <table class="Contacts-CityContactsTable" v-bind="tableAttrs">
         <thead>
           <tr>
             <th class="text-center" scope="col">
@@ -175,7 +175,9 @@ export default Vue.extend({
 
 <style lang="scss">
 .Contacts {
-  &-Table {
+  &-CityContactsTable,
+  &-SubjectDetailsTable,
+  &-WardsContactsTable {
     width: 100%;
     border-collapse: collapse;
 
@@ -219,7 +221,18 @@ export default Vue.extend({
         tr {
           height: auto;
 
-          .content {
+          .RowHeader {
+            font-weight: bold;
+            border-bottom: none !important;
+            padding-top: 12px;
+            padding-bottom: 8px;
+          }
+
+          .Content {
+            padding-bottom: 12px;
+          }
+
+          /* .content {
             font-weight: bold;
             border-bottom: none !important;
             padding-top: 12px;
@@ -232,7 +245,7 @@ export default Vue.extend({
 
           .tel {
             padding-bottom: 12px;
-          }
+          } */
         }
 
         tr:not(:last-child) {
@@ -243,6 +256,37 @@ export default Vue.extend({
       td {
         display: block;
       }
+    }
+  }
+
+  @include lessThan($medium) {
+    &-CityContactsTable .RowHeader {
+      .Name {
+        // todo
+      }
+
+      .Tel {
+        // todo
+      }
+
+      .Notes {
+        // todo
+      }
+
+      /* .content {
+            font-weight: bold;
+            border-bottom: none !important;
+            padding-top: 12px;
+            padding-bottom: 8px;
+          }
+
+          .bureau {
+            border-bottom: none !important;
+          }
+
+          .tel {
+            padding-bottom: 12px;
+          } */
     }
   }
 }
