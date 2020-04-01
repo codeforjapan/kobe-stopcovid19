@@ -11,10 +11,9 @@
         <thead>
           <tr>
             <th class="text-center" scope="col">
-              {{ $t('お問い合わせ内容') }}
+              {{ $t('名称・電話番号') }}
             </th>
-            <th class="text-center" scope="col">{{ $t('局名') }}</th>
-            <th class="text-center" scope="col">{{ $t('電話番号') }}</th>
+            <th class="text-center" scope="col">{{ $t('対象者') }}</th>
           </tr>
         </thead>
         <tbody>
