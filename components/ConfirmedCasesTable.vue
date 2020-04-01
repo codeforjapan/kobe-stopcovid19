@@ -81,7 +81,7 @@
             <div :class="$style.content">
               <span>{{ $t('退院') }}</span>
               <span>
-                <strong>{{ 退院 }}</strong>
+                <strong>{{ 治癒確認 }}</strong>
                 <span :class="$style.unit">{{ $t('人') }}</span>
               </span>
             </div>
@@ -122,7 +122,7 @@ export default Vue.extend({
       type: Number,
       required: true
     },
-    退院: {
+    治癒確認: {
       type: Number,
       required: true
     }

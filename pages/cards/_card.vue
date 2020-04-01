@@ -47,7 +47,7 @@
         this.$route.params.card == 'number-of-reports-to-health-center-desk'
       "
     />
-    <shinjuku-st-map-card
+    <!--<shinjuku-st-map-card
       v-else-if="this.$route.params.card == 'shinjuku-st-heatmap'"
     />
     <tokyo-st-map-card
@@ -55,7 +55,7 @@
     />
     <tokyo-city-map-card
       v-else-if="this.$route.params.card == 'tokyo-city-heatmap'"
-    />
+    />-->
   </div>
 </template>
 
@@ -119,7 +119,7 @@ export default {
         updatedAt = Data.patients.date
         break
       case 'number-of-tested':
-        title = this.$t('検査実施件数')
+        title = this.$t('市内でのPCR検査件数')
         updatedAt = Data.inspections_summary.date
         break
       /* case 'number-of-inspection-persons':
