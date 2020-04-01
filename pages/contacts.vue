@@ -1,7 +1,7 @@
 <template>
   <div class="Contacts">
     <page-header class="mb-3">
-      {{ $t('お問い合わせ先一覧') }}
+      {{ $t('神戸市電話相談窓口') }}
     </page-header>
     <StaticCard>
       <h3>
@@ -340,7 +340,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: this.$t('お問い合わせ先一覧') as string
+      title: this.$t('神戸市電話相談窓口') as string
     }
   }
 })
