@@ -428,7 +428,7 @@ export default Vue.extend({
   &-SubjectDetailsTable {
     @include largerThan($medium) {
       tbody tr {
-        min-height: 96px;
+        height: 96px;
       }
     }
   }
