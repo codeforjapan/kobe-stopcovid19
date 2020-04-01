@@ -84,7 +84,7 @@
             </picture>
           </a>
           <a
-            href="https://github.com/tokyo-metropolitan-gov/covid19"
+            href="https://github.com/codeforjapan/kobe-stopcovid19"
             target="_blank"
             rel="noopener noreferrer"
             class="SideNavigation-SocialLink"
