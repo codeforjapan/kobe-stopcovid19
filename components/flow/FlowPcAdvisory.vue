@@ -49,6 +49,7 @@
 
   &Container {
     background-color: $gray-5;
+    border: 3px solid #4d4d4d;
     border-radius: 4px;
     height: 100%;
     padding: 30px 20px 20px 20px;
