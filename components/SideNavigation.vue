@@ -51,7 +51,7 @@
       <footer class="SideNavigation-Footer">
         <div class="SideNavigation-Social">
           <a
-            href="https://line.me/R/ti/p/%40822sysfc"
+            href="https://lin.ee/3TT6shh"
             target="_blank"
             rel="noopener noreferrer"
             class="SideNavigation-SocialLink"
@@ -62,7 +62,7 @@
             </picture>
           </a>
           <a
-            href="https://twitter.com/tokyo_bousai"
+            href="https://twitter.com/kobekoho"
             target="_blank"
             rel="noopener noreferrer"
             class="SideNavigation-SocialLink"
@@ -73,7 +73,7 @@
             </picture>
           </a>
           <a
-            href="https://www.facebook.com/tochokoho"
+            href="https://www.facebook.com/kobekoho/"
             target="_blank"
             rel="noopener noreferrer"
             class="SideNavigation-SocialLink"
