@@ -186,6 +186,114 @@
           )
         }}
       </p>
+      <h4>
+        {{ $t('お住まいの区および支所の保健センター') }}
+      </h4>
+      <i18n tag="p" path="{time}の間は、下記でも相談を受け付けています。">
+        <template v-slot:time>
+          <strong>{{ $t('平日の8時45分から17時15分') }}</strong>
+        </template>
+      </i18n>
+      <table class="Contacts-WardsContactsTable" v-bind="tableAttrs">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col">
+              {{ $t('各区および支所') }}
+            </th>
+            <th class="text-center" scope="col">{{ $t('電話番号') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="RowHeader" v-bind="headingAttrs">
+              {{ $t('東灘区') }}
+            </td>
+            <td class="Content">
+              <a href="tel:0788414131">841-4131</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="RowHeader" v-bind="headingAttrs">
+              {{ $t('灘区') }}
+            </td>
+            <td class="Content">
+              <a href="tel:0788437001">843-7001</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="RowHeader" v-bind="headingAttrs">
+              {{ $t('中央区') }}
+            </td>
+            <td class="Content">
+              <a href="tel:0782324411">232-4411</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="RowHeader" v-bind="headingAttrs">
+              {{ $t('兵庫区') }}
+            </td>
+            <td class="Content">
+              <a href="tel:0785112111">511-2111</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="RowHeader" v-bind="headingAttrs">
+              {{ $t('北区') }}
+            </td>
+            <td class="Content">
+              <a href="tel:0785931111">593-1111</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="RowHeader" v-bind="headingAttrs">
+              {{ $t('北区（北神区役所）') }}
+            </td>
+            <td class="Content">
+              <a href="tel:0789815377">981-5377</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="RowHeader" v-bind="headingAttrs">
+              {{ $t('長田区') }}
+            </td>
+            <td class="Content">
+              <a href="tel:0785792311">579-2311</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="RowHeader" v-bind="headingAttrs">
+              {{ $t('須磨区') }}
+            </td>
+            <td class="Content">
+              <a href="tel:0787314341">731-4341</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="RowHeader" v-bind="headingAttrs">
+              {{ $t('北須磨支所') }}
+            </td>
+            <td class="Content">
+              <a href="tel:0787931335">793-1335</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="RowHeader" v-bind="headingAttrs">
+              {{ $t('垂水区') }}
+            </td>
+            <td class="Content">
+              <a href="tel:0787085151">708-5151</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="RowHeader" v-bind="headingAttrs">
+              {{ $t('西区') }}
+            </td>
+            <td class="Content">
+              <a href="tel:0789290001">929-0001</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </StaticCard>
   </div>
 </template>
@@ -264,10 +372,6 @@ export default Vue.extend({
         height: 48px;
       }
 
-      tbody tr {
-        height: 96px;
-      }
-
       tr:last-child,
       .MergedLastRow {
         border: none;
@@ -316,6 +420,23 @@ export default Vue.extend({
 
       td {
         display: block;
+      }
+    }
+  }
+
+  &-CityContactsTable,
+  &-SubjectDetailsTable {
+    @include largerThan($medium) {
+      tbody tr {
+        min-height: 96px;
+      }
+    }
+  }
+
+  &-WardsContactsTable {
+    @include largerThan($medium) {
+      tbody tr {
+        height: 2.5em;
       }
     }
   }
