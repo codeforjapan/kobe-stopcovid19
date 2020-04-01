@@ -51,7 +51,7 @@
       <footer class="SideNavigation-Footer">
         <div class="SideNavigation-Social">
           <a
-            href="https://line.me/R/ti/p/%40822sysfc"
+            href="https://lin.ee/3TT6shh"
             target="_blank"
             rel="noopener noreferrer"
             class="SideNavigation-SocialLink"
@@ -62,7 +62,7 @@
             </picture>
           </a>
           <a
-            href="https://twitter.com/tokyo_bousai"
+            href="https://twitter.com/kobekoho"
             target="_blank"
             rel="noopener noreferrer"
             class="SideNavigation-SocialLink"
@@ -73,7 +73,7 @@
             </picture>
           </a>
           <a
-            href="https://www.facebook.com/tochokoho"
+            href="https://www.facebook.com/kobekoho/"
             target="_blank"
             rel="noopener noreferrer"
             class="SideNavigation-SocialLink"
@@ -83,8 +83,8 @@
               <img src="/facebook.png" alt="Facebook" />
             </picture>
           </a>
-          <a
-            href="https://github.com/tokyo-metropolitan-gov/covid19"
+          <!--<a
+            href="https://github.com/codeforjapan/kobe-stopcovid19"
             target="_blank"
             rel="noopener noreferrer"
             class="SideNavigation-SocialLink"
@@ -93,7 +93,7 @@
               <source srcset="/github.webp" type="image/webp" />
               <img src="/github.png" alt="GitHub" />
             </picture>
-          </a>
+          </a>-->
         </div>
         <small class="SideNavigation-Copyright">
           {{ $t('このサイトの内容物は') }}
