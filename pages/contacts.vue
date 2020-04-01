@@ -86,6 +86,72 @@
         </tbody>
       </table>
     </StaticCard>
+    <StaticCard>
+      <h3>
+        {{ $t('帰国者・接触者相談センターの相談対象者') }}
+      </h3>
+      <table class="Contacts-SubjectDetailsTable" v-bind="tableAttrs">
+        <tbody>
+          <tr>
+            <td class="RowHeader" v-bind="headingAttrs">
+              1. {{ $t('感染者との接触があった方') }}
+            </td>
+            <td class="Content">
+              {{
+                $t(
+                  '新型コロナウイルス感染症であることが確定した方と濃厚接触歴があり、発熱または呼吸器症状のある方'
+                )
+              }}
+            </td>
+          </tr>
+          <tr>
+            <td class="RowHeader" v-bind="headingAttrs">
+              2. {{ $t('WHOの公表する流行地域への渡航等があった方') }}
+            </td>
+            <td class="Content">
+              <i18n
+                path="37.5度以上の発熱かつ呼吸器症状を有し、発症前14日以内に{pdf}へ渡航または居住していた方、あるいはその地域の居住者との濃厚接触歴がある方"
+              >
+                <template v-slot:pdf>
+                  <a
+                    href="https://www.city.kobe.lg.jp/documents/31680/20200318ryuukouchiiki.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {{ $t('WHOの公表する流行地域（PDF：419KB）') }}
+                  </a>
+                </template>
+              </i18n>
+            </td>
+          </tr>
+          <tr class="MergedLastRow">
+            <td class="RowHeader" rowspan="2" v-bind="headingAttrs">
+              3. {{ $t('次の相談・受診の目安に当てはまる方') }}
+            </td>
+            <td class="Content MergedMiddleRow">
+              <i18n
+                tag="p"
+                path="風邪の症状や37.5度以上の発熱が4日以上{elders}続く方"
+              >
+                <template v-slot:elders>
+                  <strong>
+                    {{ $t('（高齢者・基礎疾患等※のある方は2日程度）') }}
+                  </strong>
+                </template>
+              </i18n>
+              <p>
+                {{ $t('注）解熱剤を飲み続けなければならない方も同様です。') }}
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td class="Content">
+              {{ $t('強いだるさ（倦怠感）や息苦しさ（呼吸困難）がある方') }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </StaticCard>
   </div>
 </template>
 
@@ -139,6 +205,10 @@ export default Vue.extend({
 
 <style lang="scss">
 .Contacts {
+  strong {
+    border-bottom: none;
+  }
+
   &-CityContactsTable,
   &-SubjectDetailsTable,
   &-WardsContactsTable {
@@ -163,16 +233,18 @@ export default Vue.extend({
         height: 96px;
       }
 
+      tr:last-child,
+      .MergedLastRow {
+        border: none;
+      }
+
       th,
-      tr:not(:last-child) {
+      tr:not(:last-child):not(.MergedLastRow),
+      .MergedMiddleRow {
         border-top: none;
         border-left: none;
         border-right: none;
         border-bottom: thin solid rgba(0, 0, 0, 0.12);
-      }
-
-      tr:last-child {
-        border: none;
       }
     }
 
@@ -197,8 +269,13 @@ export default Vue.extend({
           }
         }
 
-        tr:not(:last-child) {
+        tr:not(:last-child):not(.MergedLastRow) {
           border-bottom: thin solid rgba(0, 0, 0, 0.12);
+        }
+
+        .MergedMiddleRow {
+          border-bottom: none;
+          padding-bottom: 6px !important;
         }
       }
 
