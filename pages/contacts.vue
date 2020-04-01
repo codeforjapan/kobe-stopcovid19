@@ -18,105 +18,69 @@
         </thead>
         <tbody>
           <tr>
-            <td class="content" v-bind="headingAttrs">
-              {{ $t('サイト全般に関すること') }}
+            <td class="RowHeader" v-bind="headingAttrs">
+              <dl>
+                <dt class="Name">
+                  {{ $t('新型コロナウィルス専用健康相談窓口') }}
+                </dt>
+                <dd class="Tel">
+                  <a href="tel:0783226250">078-322-6250</a>
+                </dd>
+              </dl>
             </td>
-            <td class="bureau">{{ $t('政策企画局') }}</td>
-            <td class="tel"><a href="tel:03-5388-2171">03-5388-2171</a></td>
-          </tr>
-          <tr>
-            <td class="content" v-bind="headingAttrs">
-              {{ $t('サイトの技術面に関すること') }}<br />{{
-                $t('オープンデータ、オープンソースに関すること')
+            <td class="Content">
+              {{
+                $t(
+                  '予防に関すること、感染症・健康不安に対する一般的な相談のある方'
+                )
               }}
             </td>
-            <td class="bureau">{{ $t('戦略政策情報推進本部') }}</td>
-            <td class="tel"><a href="tel:03-5320-7930">03-5320-7930</a></td>
           </tr>
           <tr>
-            <td class="content" v-bind="headingAttrs">
-              {{ $t('新型コロナウイルス感染症対策本部会議に関すること')
-              }}<br />{{ $t('都庁来庁者データに関すること') }}
+            <td class="RowHeader" v-bind="headingAttrs">
+              <dl>
+                <dt class="Name">{{ $t('帰国者・接触者相談センター') }}</dt>
+                <dd class="Tel"><a href="tel:0783226829">078-322-6829</a></dd>
+              </dl>
+              <p class="Notes">
+                {{
+                  $t(
+                    'お電話がつながりにくい場合は、上記専用健康相談窓口におかけください。'
+                  )
+                }}
+              </p>
             </td>
-            <td class="bureau">{{ $t('総務局') }}</td>
-            <td class="tel">
-              {{ $t('感染症対策本部会議に関すること') }}<br /><a
-                href="tel:03-5320-7891"
-                >03-5320-7891</a
-              ><br />
-              {{ $t('都庁来庁者データに関すること') }}<br /><a
-                href="tel:03-5388-2319"
-                >03-5388-2319</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td class="content" v-bind="headingAttrs">
-              {{ $t('都公式ホームページに関すること') }}<br />{{
-                $t('都公式SNSアカウントに関すること')
-              }}
-            </td>
-            <td class="bureau">{{ $t('生活文化局') }}</td>
-            <td class="tel">
-              {{ $t('都公式ホームページに関すること') }}<br /><a
-                href="tel:03-5388-3061"
-                >03-5388-3061</a
-              ><br />
-              {{ $t('都公式SNSアカウントに関すること') }}<br /><a
-                href="tel:03-5388-3094"
-                >03-5388-3094</a
-              >
+            <td class="Content">
+              <ul>
+                <li>{{ $t('感染者との接触があった方') }}</li>
+                <li>{{ $t('湖北省等に渡航歴等のある方 ') }}</li>
+                <li>
+                  {{ $t('風邪の症状や37.5℃以上の発熱が4日以上続いている方') }}
+                </li>
+              </ul>
+              {{ $t('など') }}
+              <strong>{{ $t('（下記の相談対象者参照）') }}</strong>
             </td>
           </tr>
           <tr>
-            <td class="content" v-bind="headingAttrs">
-              {{ $t('中小企業支援、テレワークに関すること') }}
+            <td class="RowHeader" v-bind="headingAttrs">
+              <dl>
+                <dt class="Name">{{ $t('ファクシミリ') }}</dt>
+                <dd class="Tel"><a href="tel:0783915532">078-391-5532</a></dd>
+              </dl>
+              <p class="Notes">
+                {{ $t('送付票はこちら:') }}
+                <a
+                  href="https://www.city.kobe.lg.jp/documents/31680/20200318souhuhyou.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {{ $t('送付票') }}
+                </a>
+              </p>
             </td>
-            <td class="bureau">{{ $t('産業労働局') }}</td>
-            <td class="tel">
-              {{ $t('資金繰りに関すること') }}<br /><a href="tel:03-5320-4877"
-                >03-5320-4877</a
-              ><br />
-              {{ $t('経営に関すること') }}<br /><a href="tel:03-3251-7881"
-                >03-3251-7881</a
-              ><br />
-              {{ $t('労働関係に関すること') }}<br /><a href="tel:0570-00-6110"
-                >0570-00-6110</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td class="content" v-bind="headingAttrs">
-              {{ $t('新型コロナウイルス感染症の予防・検査・医療に関すること') }}
-            </td>
-            <td class="bureau">{{ $t('福祉保健局') }}</td>
-            <td class="tel">
-              <a href="tel:0570-550-571">0570-550-571</a><br />
-              {{ $t('（新型コロナコールセンター）') }}
-            </td>
-          </tr>
-          <tr>
-            <td class="content" v-bind="headingAttrs">
-              {{ $t('都立学校に関すること') }}
-            </td>
-            <td class="bureau">{{ $t('教育庁') }}</td>
-            <td class="tel"><a href="tel:03-5320-6705">03-5320-6705</a></td>
-          </tr>
-          <tr>
-            <td class="content" v-bind="headingAttrs">
-              {{ $t('スムーズビズに関すること') }}
-            </td>
-            <td class="bureau">{{ $t('都市整備局') }}</td>
-            <td class="tel"><a href="tel:03-5388-3317">03-5388-3317</a></td>
-          </tr>
-          <tr>
-            <td class="content" v-bind="headingAttrs">
-              {{ $t('都営交通に関すること') }}
-            </td>
-            <td class="bureau">{{ $t('交通局') }}</td>
-            <td class="tel">
-              <a href="tel:03-3816-5700">03-3816-5700</a><br />
-              {{ $t('（都営交通お客様センター）') }}
+            <td class="Content">
+              {{ $t('上記相談窓口、相談センター共通で受付しています。') }}
             </td>
           </tr>
         </tbody>
@@ -231,21 +195,6 @@ export default Vue.extend({
           .Content {
             padding-bottom: 12px;
           }
-
-          /* .content {
-            font-weight: bold;
-            border-bottom: none !important;
-            padding-top: 12px;
-            padding-bottom: 8px;
-          }
-
-          .bureau {
-            border-bottom: none !important;
-          }
-
-          .tel {
-            padding-bottom: 12px;
-          } */
         }
 
         tr:not(:last-child) {
@@ -259,34 +208,16 @@ export default Vue.extend({
     }
   }
 
-  @include lessThan($medium) {
-    &-CityContactsTable .RowHeader {
-      .Name {
-        // todo
-      }
-
-      .Tel {
-        // todo
-      }
-
+  &-CityContactsTable .RowHeader {
+    .Tel {
+      margin-top: 0;
+      margin-left: 0;
+      font-weight: bold;
+    }
+    @include lessThan($medium) {
       .Notes {
-        // todo
+        font-weight: normal;
       }
-
-      /* .content {
-            font-weight: bold;
-            border-bottom: none !important;
-            padding-top: 12px;
-            padding-bottom: 8px;
-          }
-
-          .bureau {
-            border-bottom: none !important;
-          }
-
-          .tel {
-            padding-bottom: 12px;
-          } */
     }
   }
 }
