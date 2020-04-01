@@ -3,11 +3,11 @@
     <page-header class="mb-3">
       {{ $t('お問い合わせ先一覧') }}
     </page-header>
-    <StaticCard class="Contacts-Card">
+    <StaticCard>
       <h3>
         {{ $t('神戸市電話相談窓口（24時間受付: 多言語対応可）') }}
       </h3>
-      <table class="Contacts-Card-Table" v-bind="tableAttrs">
+      <table class="Contacts-Table" v-bind="tableAttrs">
         <thead>
           <tr>
             <th class="text-center" scope="col">
@@ -175,77 +175,73 @@ export default Vue.extend({
 
 <style lang="scss">
 .Contacts {
-  &-Card {
-    @include card-container();
+  &-Table {
+    width: 100%;
+    border-collapse: collapse;
 
-    &-Table {
-      width: 100%;
-      border-collapse: collapse;
+    th {
+      font-size: 14px !important;
+    }
 
-      th {
-        font-size: 14px !important;
+    td {
+      padding: 0 16px;
+      font-size: 14px;
+    }
+
+    @include largerThan($medium) {
+      thead tr {
+        height: 48px;
+      }
+
+      tbody tr {
+        height: 96px;
+      }
+
+      th,
+      tr:not(:last-child) {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: thin solid rgba(0, 0, 0, 0.12);
+      }
+
+      tr:last-child {
+        border: none;
+      }
+    }
+
+    @include lessThan($medium) {
+      thead {
+        display: none;
+      }
+
+      tbody {
+        tr {
+          height: auto;
+
+          .content {
+            font-weight: bold;
+            border-bottom: none !important;
+            padding-top: 12px;
+            padding-bottom: 8px;
+          }
+
+          .bureau {
+            border-bottom: none !important;
+          }
+
+          .tel {
+            padding-bottom: 12px;
+          }
+        }
+
+        tr:not(:last-child) {
+          border-bottom: thin solid rgba(0, 0, 0, 0.12);
+        }
       }
 
       td {
-        padding: 0 16px;
-        font-size: 14px;
-      }
-
-      @include largerThan($medium) {
-        thead tr {
-          height: 48px;
-        }
-
-        tbody tr {
-          height: 96px;
-        }
-
-        th,
-        tr:not(:last-child) {
-          border-top: none;
-          border-left: none;
-          border-right: none;
-          border-bottom: thin solid rgba(0, 0, 0, 0.12);
-        }
-
-        tr:last-child {
-          border: none;
-        }
-      }
-
-      @include lessThan($medium) {
-        thead {
-          display: none;
-        }
-
-        tbody {
-          tr {
-            height: auto;
-
-            .content {
-              font-weight: bold;
-              border-bottom: none !important;
-              padding-top: 12px;
-              padding-bottom: 8px;
-            }
-
-            .bureau {
-              border-bottom: none !important;
-            }
-
-            .tel {
-              padding-bottom: 12px;
-            }
-          }
-
-          tr:not(:last-child) {
-            border-bottom: thin solid rgba(0, 0, 0, 0.12);
-          }
-        }
-
-        td {
-          display: block;
-        }
+        display: block;
       }
     }
   }
