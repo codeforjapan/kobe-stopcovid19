@@ -83,7 +83,7 @@
               <img src="/facebook.png" alt="Facebook" />
             </picture>
           </a>
-          <a
+          <!--<a
             href="https://github.com/codeforjapan/kobe-stopcovid19"
             target="_blank"
             rel="noopener noreferrer"
@@ -93,7 +93,7 @@
               <source srcset="/github.webp" type="image/webp" />
               <img src="/github.png" alt="GitHub" />
             </picture>
-          </a>
+          </a>-->
         </div>
         <small class="SideNavigation-Copyright">
           {{ $t('このサイトの内容物は') }}
