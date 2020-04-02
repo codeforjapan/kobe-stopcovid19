@@ -35,27 +35,12 @@
         this.$route.params.card == 'predicted-number-of-toei-subway-passengers'
       "
     />
-    <agency-card v-else-if="this.$route.params.card == 'agency'" />
-    <shinjuku-visitors-card
-      v-else-if="this.$route.params.card == 'shinjuku-visitors'"
-    />
-    <chiyoda-visitors-card
-      v-else-if="this.$route.params.card == 'chiyoda-visitors'"
-    />-->
+    <agency-card v-else-if="this.$route.params.card == 'agency'" />-->
     <health-center-desk-reports-number-card
       v-else-if="
         this.$route.params.card == 'number-of-reports-to-health-center-desk'
       "
     />
-    <!--<shinjuku-st-map-card
-      v-else-if="this.$route.params.card == 'shinjuku-st-heatmap'"
-    />
-    <tokyo-st-map-card
-      v-else-if="this.$route.params.card == 'tokyo-st-heatmap'"
-    />
-    <tokyo-city-map-card
-      v-else-if="this.$route.params.card == 'tokyo-city-heatmap'"
-    />-->
   </div>
 </template>
 
@@ -63,8 +48,6 @@
 import Data from '@/data/data.json'
 /* import MetroData from '@/data/metro.json'
 import agencyData from '@/data/agency.json'
-import ShinjukuData from '@/data/13104_daily_visitors.json'
-import ChiyodaData from '@/data/13101_daily_visitors.json'
  */
 import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
 // import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
@@ -77,8 +60,6 @@ import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDe
 /*
 import MetroCard from '@/components/cards/MetroCard.vue'
 import AgencyCard from '@/components/cards/AgencyCard.vue'
-import ShinjukuVisitorsCard from '@/components/cards/ShinjukuVisitorsCard.vue'
-import ChiyodaVisitorsCard from '@/components/cards/ChiyodaVisitorsCard.vue'
  */
 import HealthCenterDeskReportsNumberCard from '@/components/cards/HealthCenterDeskReportsNumberCard'
 
@@ -93,9 +74,7 @@ export default {
     TelephoneAdvisoryReportsNumberCard,
     ConsultationDeskReportsNumberCard,
     /* MetroCard,
-    AgencyCard,
-    ShinjukuVisitorsCard,
-    ChiyodaVisitorsCard */
+    AgencyCard, */
     HealthCenterDeskReportsNumberCard
   },
   data() {
@@ -141,14 +120,6 @@ export default {
       case 'agency':
         title = this.$t('都庁来庁者数の推移')
         updatedAt = agencyData.date
-        break
-      case 'shinjuku-visitors':
-        title = this.$t('新宿区エリアの来訪者数の推移（参考値）')
-        updatedAt = ShinjukuData.date
-        break
-      case 'chiyoda-visitors':
-        title = this.$t('千代田区エリアの来訪者数の推移（参考値）')
-        updatedAt = ChiyodaData.date
         break
        */
       case 'number-of-reports-to-health-center-desk':

@@ -54,6 +54,8 @@ export default (data: DataType[]) => {
     }
     tableDate.datasets.push(TableRow)
   })
-  tableDate.datasets.sort((a, b) => (a === b ? 0 : a < b ? 1 : -1))
+  tableDate.datasets.sort((a, b) =>
+    a.判明日 === b.判明日 ? 0 : a.判明日 < b.判明日 ? 1 : -1
+  )
   return tableDate
 }
