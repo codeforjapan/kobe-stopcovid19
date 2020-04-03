@@ -91,8 +91,7 @@ const config: Configuration = {
   buildModules: [
     '@nuxtjs/stylelint-module',
     '@nuxtjs/vuetify',
-    '@nuxt/typescript-build',
-    '@nuxtjs/google-analytics'
+    '@nuxt/typescript-build'
   ],
   /*
    ** Nuxt.js modules
@@ -115,9 +114,6 @@ const config: Configuration = {
     defaultAssets: {
       icons: false
     }
-  },
-  googleAnalytics: {
-    id: process.env.GOOGLE_ANALYTICS_ID // .env.production などに設定してください。
   },
   build: {
     plugins: [

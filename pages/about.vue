@@ -87,66 +87,6 @@
       </p>
     </StaticCard>
     <StaticCard>
-      <h3>{{ $t('Google Analyticsの利用について') }}</h3>
-      <p>
-        {{
-          $t(
-            '当サイトでは、サービス向上やサイトの改善のためにGoogle LLCの提供するアクセス分析のツールであるGoogle Analyticsを利用した計測を行っております。'
-          )
-        }}<br />
-        {{
-          $t(
-            'Google Analyticsは、当サイトが発行するクッキー (Cookie) を利用して、Webサイトの利用データ（アクセス状況、トラフィック、閲覧環境、およびIPアドレスなど個人の特定が可能なごく一部の情報）を収集しております。クッキー (Cookie) の利用に関してはGoogleのプライバシーポリシーと規約に基づいております。'
-          )
-        }}<br />
-        {{
-          $t(
-            '取得したデータは Webサイト利用状況の分析、サイト運営者へのレポートの作成、その他のサービスの提供に関わる目的に限り、これを使用します。'
-          )
-        }}<br />
-        {{
-          $t(
-            'Google Analyticsの利用規約及びプライバシーポリシーに関する説明については、Google Analyticsのサイトをご覧ください。'
-          )
-        }}
-      </p>
-      <ul>
-        <li>
-          <a
-            :href="
-              $t(
-                'https://marketingplatform.google.com/about/analytics/terms/jp/'
-              )
-            "
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {{ $t('Google Analytics利用規約') }}
-          </a>
-        </li>
-        <li>
-          <a
-            :href="$t('https://policies.google.com/privacy?hl=ja')"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {{ $t('Googleのプライバシーポリシー') }}
-          </a>
-        </li>
-        <li>
-          <a
-            :href="
-              $t('https://support.google.com/analytics/answer/6004245?hl=ja')
-            "
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {{ $t('Google Analyticsに関する詳細情報') }}
-          </a>
-        </li>
-      </ul>
-    </StaticCard>
-    <StaticCard>
       <h3>{{ $t('免責事項') }}</h3>
       <p>
         {{

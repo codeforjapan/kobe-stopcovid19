@@ -31,12 +31,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn run test
       - name: generate
-        run: |
-          echo "GOOGLE_ANALYTICS_ID=${GOOGLE_ANALYTICS_ID}" >> .env.production
-          cat .env.production
-          yarn run generate:deploy --fail-on-page-error
-        env:
-          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+        run: yarn run generate:deploy --fail-on-page-error
 
       - name: Temporarily disable "include administrators" branch protection
         uses: benjefferies/branch-protection-bot@master
