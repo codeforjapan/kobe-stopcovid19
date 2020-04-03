@@ -10,12 +10,12 @@
     <div>
       <div class="Flow-Card-Button-Wrapper">
         <a
-          href="https://www.fukushihoken.metro.tokyo.lg.jp/iryo/kansen/coronasodan.html"
+          href="https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus.html#soudansaki"
           target="_blank"
           rel="noopener noreferrer"
           class="Flow-Card-Button"
         >
-          {{ $t('詳細を見る（神戸市福祉保健局）') }}
+          {{ $t('詳細を見る（神戸市健康局）') }}
           <v-icon class="Flow-Card-Button-ExternalLinkIcon" size="20">
             mdi-open-in-new
           </v-icon>
