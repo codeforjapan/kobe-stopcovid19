@@ -79,7 +79,7 @@
         <!-- eslint-enable -->
       </span>
       <span :class="$style.break">
-        {{ $t('神戸市健康安全研究センター等') }}
+        {{ $t('神戸市環境保健研究所等') }}
       </span>
       <small :class="[$style.note, $style.fzSmall, $style.break]">
         {{
