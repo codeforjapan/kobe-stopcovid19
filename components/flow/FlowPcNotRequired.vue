@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.flowContainer">
     <h3 :class="$style.sectionTitle">
-      <i18n path="新型コロナ外来 {advice} と判断された場合" tag="p">
+      <i18n path="帰国者・接触者外来 {advice} と判断された場合" tag="p">
         <template v-slot:advice>
           <strong>
             {{ $t('受診が不要') }}

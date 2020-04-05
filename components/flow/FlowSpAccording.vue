@@ -10,7 +10,7 @@
     <i18n
       tag="p"
       :class="$style.diag"
-      path="新型コロナ外来 {advice} と判断された場合"
+      path="帰国者・接触者外来 {advice} と判断された場合"
     >
       <template v-slot:advice>
         <span :class="[$style.fzXLLarge, $style.break]">
@@ -21,7 +21,7 @@
     <p :class="$style.decision">
       <template v-if="!langsWithoutOutpatient.includes($i18n.locale)">
         <span :class="$style.fzSmall">
-          {{ $t('新型コロナ外来（帰国者・接触者外来）') }}
+          {{ $t('帰国者・接触者外来') }}
         </span>
         <span :class="[$style.fzLarge, $style.break]">{{
           $t('医師による判断')
@@ -119,7 +119,7 @@
       id="not_required"
       tag="p"
       :class="[$style.diag, $style.hr]"
-      path="新型コロナ外来 {advice} と判断された場合"
+      path="帰国者・接触者外来 {advice} と判断された場合"
     >
       <template v-slot:advice>
         <span :class="[$style.break, $style.fzXLLarge]">
