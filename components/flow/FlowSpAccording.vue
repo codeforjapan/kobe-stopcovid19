@@ -148,7 +148,7 @@
             </template>
             <template v-slot:advisory>
               <strong :class="$style.advisory">
-                {{ $t('新型コロナ受診相談窓口（日本語のみ）') }}
+                {{ $t('帰国者・接触者 相談センター') }}
               </strong>
             </template>
           </i18n>
