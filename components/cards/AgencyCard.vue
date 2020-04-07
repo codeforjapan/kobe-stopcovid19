@@ -1,11 +1,18 @@
 <template>
   <v-col cols="12" md="6" class="DataCard">
+    <!--
     <agency-bar-chart
       :title="$t('都庁来庁者数の推移')"
       :title-id="'agency'"
       :chart-id="'agency'"
       :chart-data="agencyData"
       :date="agencyData.date"
+      :unit="$t('人')"
+    >-->
+    <agency-bar-chart
+      :title="$t('都庁来庁者数の推移')"
+      :title-id="'agency'"
+      :chart-id="'agency'"
       :unit="$t('人')"
     >
       <template v-slot:description>
@@ -16,7 +23,7 @@
 </template>
 
 <script>
-import agencyData from '@/data/agency.json'
+// import agencyData from '@/data/agency.json'
 import AgencyBarChart from '@/components/AgencyBarChart.vue'
 
 export default {
@@ -25,7 +32,7 @@ export default {
   },
   data() {
     return {
-      agencyData
+      // agencyData
     }
   }
 }
