@@ -4,7 +4,7 @@
       <i18n
         :class="$style.Catch"
         tag="p"
-        path="新型コロナ外来 {advice} と判断された場合"
+        path="帰国者・接触者外来 {advice} と判断された場合"
       >
         <template v-slot:advice>
           <span :class="$style.Emphasis">
@@ -17,7 +17,7 @@
       <div :class="[$style.Card, $style.CardLarge, $style.CardGray]">
         <template v-if="!langsWithoutOutpatient.includes($i18n.locale)">
           <p :class="$style.Outpatient">
-            {{ $t('新型コロナ外来（帰国者・接触者外来）') }}
+            {{ $t('帰国者・接触者外来') }}
           </p>
           <p :class="$style.Judge">
             {{ $t('医師による判断') }}
