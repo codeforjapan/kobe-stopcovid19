@@ -28,3 +28,6 @@ python3 main.py
 
 ## License
 このスクリプトは[MITライセンス](LICENSE)で公開されています。
+
+## Original Repository
+このスクリプトのオリジナルは[y-chan/covid19kobe-scraping](https://github.com/y-chan/covid19kobe-scraping)です。

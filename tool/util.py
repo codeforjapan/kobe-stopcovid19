@@ -3,6 +3,7 @@ import requests
 import codecs
 import shutil
 import time
+import os
 
 from bs4 import BeautifulSoup
 from json import dumps
@@ -49,6 +50,10 @@ SUMMARY_INIT = {
 }
 
 
+def print_log(type: str, message: str) -> None:
+    print(f"[{datetime.now(jst).strftime('%Y-%m-%d %H:%M:%S+09:00')}][covid19kobe-scraping:{type}]: {message}")
+
+
 def make_data(date, value):
     return {"日付": date, "小計": value}
 
@@ -72,8 +77,41 @@ def requests_html(path: str) -> BeautifulSoup:
     return soup
 
 
-def get_xlsx(url: str, filename: str) -> openpyxl.workbook.workbook.Workbook:
-    filename = "./data/" + filename
+def get_xlsx(path: str, number: int = 0) -> openpyxl.workbook.workbook.Workbook:
+    print_log("get", "get html file...")
+    html_doc = ""
+    failed_count = 0
+    while not html_doc:
+        try:
+            html_doc = requests.get(base_url + path).text
+        except Exception:
+            if failed_count >= 5:
+                raise Exception(f"Failed get html file from \"{base_url + path}\"!")
+            print_log("file", f"Failed get html file from \"{base_url + path}\". retrying...")
+            failed_count += 1
+            time.sleep(5)
+    soup = BeautifulSoup(html_doc, 'html.parser')
+
+    real_page_tags = soup.find_all("a")
+
+    file_url = ""
+    count = 0
+    for tag in real_page_tags:
+        if tag.get("href") is None:
+            continue
+        if tag.get("href")[-4:] == "xlsx":
+            if count == number:
+                file_url = base_url + tag.get("href")
+                break
+            count += 1
+
+    assert file_url, f"Can't get xlsx file!"
+    return requests_xlsx(file_url)
+
+
+def requests_xlsx(url: str) -> openpyxl.workbook.workbook.Workbook:
+    print_log("request", "request xlsx file...")
+    filename = "./data/" + os.path.basename(url)
     failed_count = 0
     status_code = 404
     while not status_code == 200:
@@ -83,6 +121,7 @@ def get_xlsx(url: str, filename: str) -> openpyxl.workbook.workbook.Workbook:
         except Exception:
             if failed_count >= 5:
                 raise Exception(f"Failed get xlsx file from \"{url}\"!")
+            print_log("request", f"Failed get xlsx file from \"{url}\". retrying...")
             failed_count += 1
             time.sleep(5)
     with open(filename, 'wb') as f:

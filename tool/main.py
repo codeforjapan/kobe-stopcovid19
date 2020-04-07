@@ -10,11 +10,11 @@ contacts_first_cell = 2
 
 class DataJson:
     def __init__(self):
-        self.contacts_sheet = get_xlsx(config.contacts_xlsx, "contacts.xlsx")["相談件数"]
+        self.contacts_sheet = get_xlsx(config.main_page, 1)["相談件数"]
         self.patients_html = requests_html("a57337/kenko/health/corona_zokusei.html")
         # self.inspections_sheet = get_xlsx(config.inspections_xlsx, "inspections.xlsx")["検査件数・陽性患者"]
         self.main_summary_html = requests_html("/a73576/kenko/health/infection/protection/covid_19.html")
-        self.main_summary_sheet = get_xlsx(config.main_summary_xlsx, "main_summary.xlsx")["kobe"]
+        self.main_summary_sheet = get_xlsx(config.main_page)["kobe"]
         # self.inspections_count = 4
         self.contacts_count = contacts_first_cell
         self.summary_count = summary_first_cell
