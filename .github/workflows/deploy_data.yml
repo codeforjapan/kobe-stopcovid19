@@ -1,7 +1,7 @@
 name: deploy json data
 on:
   schedule:
-    - cron:  '*/15 * * * *'
+    - cron:  '*/60 * * * *'
 
 jobs:
   build:
