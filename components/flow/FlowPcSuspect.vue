@@ -133,29 +133,7 @@
   flex-shrink: 0;
   width: 100%;
   flex-direction: row;
-
-  /* &Icon {
-    position: absolute;
-    bottom: 40%;
-    right: -30px;
-    z-index: 1;
-    display: block;
-    width: 46px;
-    height: 46px;
-  } */
 }
-
-/* .Box2 {
-  flex-grow: 0;
-  flex-shrink: 0;
-  width: 38%;
-  flex-direction: column;
-  justify-content: center;
-
-  div {
-    margin: 0.5em;
-  }
-} */
 
 .RowItems {
   flex-grow: 1;

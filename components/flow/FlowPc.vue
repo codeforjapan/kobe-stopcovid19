@@ -117,7 +117,6 @@ import FlowPcPast from './FlowPcPast.vue'
 import FlowPcDays from './FlowPcDays.vue'
 import FlowPcSuspect from './FlowPcSuspect.vue'
 import FlowPcAdvisory from './FlowPcAdvisory.vue'
-// import FlowPcAdvisory2 from './FlowPcAdvisory2.vue'
 import FlowPcRequired from './FlowPcRequired.vue'
 import FlowPcPcr from './FlowPcPcr.vue'
 import FlowPcNotRequired from './FlowPcNotRequired.vue'
@@ -129,7 +128,6 @@ export default {
     FlowPcDays,
     FlowPcSuspect,
     FlowPcAdvisory,
-    // FlowPcAdvisory2,
     FlowPcRequired,
     FlowPcPcr,
     FlowPcNotRequired,
@@ -340,19 +338,7 @@ export default {
   grid-column: 2 / 3;
   grid-row: 1 / 4;
   position: relative;
-
-  /* &Icon {
-    position: absolute;
-    left: calc(50% - 23px);
-    transform: rotate(-90deg);
-    z-index: 1;
-  } */
 }
-
-/* .Advisory2 {
-  grid-column: 2 / 3;
-  grid-row: 3 / 4;
-} */
 
 .Required {
   grid-column: 1 / 2;
