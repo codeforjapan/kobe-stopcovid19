@@ -1,17 +1,16 @@
-name: deploy json data
+name: deploy data
 on:
   schedule:
-    - cron:  '*/60 * * * *'
+    - cron:  '*/15 * * * *'
 
 jobs:
-  build:
-
+  deploy-data:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout covid19
+      - name: Checkout development branch
         uses: actions/checkout@v2
         with:
-          ref: 'development'
+          ref: development
       - name: Set up Python 3.8
         uses: actions/setup-python@v1
         with:
@@ -23,22 +22,32 @@ jobs:
       - name: Run script
         run: |
           python tool/main.py
-      - name: move xlsx files
+      - name: Move xlsx files
         run: |
-          mv data/*.xlsx dist/data
-      - run: git diff
-
-      - name: Commit files
-        continue-on-error: true
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add data dist
-          git commit -m "update json data `date '+%Y-%m-%dT%H:%M:%SZ'`"
-      - name: Create Pull Request
+          mv data/*.xlsx static/data
+      - name: Create Pull Request (for development)
         uses: peter-evans/create-pull-request@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          title: ${{ format('Update json data {0}', github.event.head_commit.timestamp) }}
+          commit-message: update data `date '+%Y-%m-%dT%H:%M:%SZ'`
+          title: ${{ format('Update json data {0}', github.event.head_commit.timestamp) }} (for development)
           labels: auto_merge
-          branch-suffix: 'short-commit-hash'
+          branch: update-data/development
+      - name: Checkout master branch
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          path: master
+      - name: Copy files
+        run: |
+          cp data/*.json master/data
+          cp static/data/*.xlsx master/static/data
+      - name: Create Pull Request (for master)
+        uses: peter-evans/create-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: master
+          base: master
+          commit-message: update data `date '+%Y-%m-%dT%H:%M:%SZ'`
+          title: ${{ format('Update json data {0}', github.event.head_commit.timestamp) }} (for master)
+          branch: update-data/master
