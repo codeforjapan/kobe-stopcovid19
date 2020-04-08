@@ -71,7 +71,7 @@
               <p class="Notes">
                 {{ $t('送付票はこちら:') }}
                 <a
-                  href="https://www.city.kobe.lg.jp/documents/31680/20200318souhuhyou.pdf"
+                  href="https://www.city.kobe.lg.jp/documents/31680/20200318souhuhyou2.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

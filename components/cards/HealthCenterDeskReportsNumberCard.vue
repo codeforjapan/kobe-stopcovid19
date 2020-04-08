@@ -18,6 +18,9 @@
       :chart-data="healthCenterGraph"
       :date="Data.health_center_summary.date"
       :unit="$t('件.reports')"
+      :url="
+        'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html#sodan'
+      "
     />
   </v-col>
 </template>
