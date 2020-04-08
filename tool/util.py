@@ -71,6 +71,7 @@ def excel_date(num) -> datetime:
 
 
 def requests_html(path: str) -> BeautifulSoup:
+    print_log("requests", "Requests html...")
     response = requests.get(base_url + path)
     response.encoding = response.apparent_encoding
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -78,7 +79,7 @@ def requests_html(path: str) -> BeautifulSoup:
 
 
 def get_xlsx(path: str, number: int = 0) -> openpyxl.workbook.workbook.Workbook:
-    print_log("get", "get html file...")
+    print_log("get", "Get html file...")
     html_doc = ""
     failed_count = 0
     while not html_doc:
@@ -87,7 +88,7 @@ def get_xlsx(path: str, number: int = 0) -> openpyxl.workbook.workbook.Workbook:
         except Exception:
             if failed_count >= 5:
                 raise Exception(f"Failed get html file from \"{base_url + path}\"!")
-            print_log("file", f"Failed get html file from \"{base_url + path}\". retrying...")
+            print_log("get", f"Failed get html file from \"{base_url + path}\". retrying...")
             failed_count += 1
             time.sleep(5)
     soup = BeautifulSoup(html_doc, 'html.parser')
@@ -110,7 +111,7 @@ def get_xlsx(path: str, number: int = 0) -> openpyxl.workbook.workbook.Workbook:
 
 
 def requests_xlsx(url: str) -> openpyxl.workbook.workbook.Workbook:
-    print_log("request", "request xlsx file...")
+    print_log("request", "Request xlsx file...")
     filename = "./data/" + os.path.basename(url)
     failed_count = 0
     status_code = 404
