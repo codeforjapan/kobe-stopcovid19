@@ -173,8 +173,8 @@ const config: Configuration = {
         '/cards/attributes-of-confirmed-cases',
         '/cards/number-of-tested',
         // '/cards/number-of-inspection-persons',
-        '/cards/number-of-reports-to-covid19-telephone-advisory-center',
-        '/cards/number-of-reports-to-covid19-consultation-desk',
+        '/cards/number-of-reports-to-returnee-contact-center',
+        '/cards/number-of-reports-to-covid19-health-consultation-desk',
         /* '/cards/predicted-number-of-toei-subway-passengers',
         '/cards/agency', */
         '/cards/number-of-reports-to-health-center-desk'

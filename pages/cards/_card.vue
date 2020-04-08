@@ -21,13 +21,13 @@
     <telephone-advisory-reports-number-card
       v-else-if="
         this.$route.params.card ==
-          'number-of-reports-to-covid19-telephone-advisory-center'
+          'number-of-reports-to-covid19-health-consultation-desk'
       "
     />
     <consultation-desk-reports-number-card
       v-else-if="
         this.$route.params.card ==
-          'number-of-reports-to-covid19-consultation-desk'
+          'number-of-reports-to-returnee-contact-center'
       "
     />
     <!--<metro-card
@@ -105,11 +105,11 @@ export default {
         title = this.$t('検査実施人数')
         updatedAt = Data.inspection_persons.date
         break */
-      case 'number-of-reports-to-covid19-telephone-advisory-center':
+      case 'number-of-reports-to-covid19-health-consultation-desk':
         title = this.$t('新型コロナ健康相談窓口 相談件数')
         updatedAt = Data.window_contacts.date
         break
-      case 'number-of-reports-to-covid19-consultation-desk':
+      case 'number-of-reports-to-returnee-contact-center':
         title = this.$t('帰国者・接触者相談センター 相談件数')
         updatedAt = Data.center_contacts.date
         break
@@ -135,7 +135,7 @@ export default {
     return data
   },
   head() {
-    const url = 'https://stopcovid19.metro.tokyo.lg.jp'
+    const url = 'https://kobe.stopcovid19.jp'
     const timestamp = new Date().getTime()
     const ogpImage =
       this.$i18n.locale === 'ja'
