@@ -86,7 +86,7 @@
     </StaticCard>
     <StaticCard>
       <h3>
-        {{ $t('帰国者・接触者相談センターの相談対象者') }}
+        {{ $t('相談対象者（帰国者・接触者相談センター）') }}
       </h3>
       <table class="Contacts-SubjectDetailsTable" v-bind="tableAttrs">
         <tbody>
