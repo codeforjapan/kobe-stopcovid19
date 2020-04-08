@@ -1,5 +1,6 @@
 <template>
   <v-col cols="12" md="6" class="DataCard">
+    <!--
     <metro-bar-chart
       :title="$t('都営地下鉄の利用者数の推移')"
       :title-id="'predicted-number-of-toei-subway-passengers'"
@@ -9,11 +10,17 @@
       :tooltips-title="metroGraphTooltipTitle"
       :tooltips-label="metroGraphTooltipLabel"
       unit="%"
+    >-->
+    <metro-bar-chart
+      :title="$t('都営地下鉄の利用者数の推移')"
+      :title-id="'predicted-number-of-toei-subway-passengers'"
+      :chart-id="'metro-bar-chart'"
+      unit="%"
     >
       <template v-slot:description>
         {{
           $t('{range}の利用者数*の平均値を基準としたときの相対値', {
-            range: metroGraph.base_period
+            range: undefined /* metroGraph.base_period */
           })
         }}
         <br />
@@ -31,7 +38,7 @@
 
 <script>
 import Data from '@/data/data.json'
-import MetroData from '@/data/metro.json'
+// import MetroData from '@/data/metro.json'
 import MetroBarChart from '@/components/MetroBarChart.vue'
 
 export default {
@@ -40,23 +47,23 @@ export default {
   },
   data() {
     // 都営地下鉄の利用者数の推移
-    const metroGraph = MetroData
+    /* const metroGraph = MetroData
     for (const dataset of metroGraph.datasets) {
       dataset.label = this.getWeekLabel(dataset.label)
-    }
+    } */
 
     // metroGraph ツールチップ title文字列
     // this.$t を使うため metroGraphOption の外側へ
-    const metroGraphTooltipTitle = (tooltipItems, _) => {
+    /* const metroGraphTooltipTitle = (tooltipItems, _) => {
       const label = this.getWeekLabel(tooltipItems[0].label)
       return this.$t('期間: {duration}', {
         // duration = label = '2月10日~14日' | '2月17日~21日' | '2月25日~28日'
         duration: this.$t(label)
       })
-    }
+    } */
     // metroGraph ツールチップ label文字列
     // this.$t を使うため metroGraphOption の外側へ
-    const metroGraphTooltipLabel = (tooltipItem, data) => {
+    /* const metroGraphTooltipLabel = (tooltipItem, data) => {
       const currentData = data.datasets[tooltipItem.datasetIndex]
       const percentage = `${currentData.data[tooltipItem.index]}%`
 
@@ -65,13 +72,13 @@ export default {
         duration: this.$t(metroGraph.base_period),
         percentage
       })
-    }
+    } */
 
     const data = {
-      Data,
-      metroGraph,
-      metroGraphTooltipTitle,
-      metroGraphTooltipLabel
+      Data
+      // metroGraph,
+      // metroGraphTooltipTitle,
+      // metroGraphTooltipLabel
     }
     return data
   },

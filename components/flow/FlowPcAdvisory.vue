@@ -2,13 +2,8 @@
   <div :class="$style.Advisory">
     <div :class="$style.AdvisoryContainer">
       <div :class="$style.AdvisoryContents">
-        <div>
-          <span :class="$style.AdvisoryContentsTitle">{{
-            $t('新型コロナ受診相談窓口（日本語のみ）')
-          }}</span>
-        </div>
-        <div :class="[$style.AdvisoryContentsColsSentense, 'mt-4']">
-          {{ $t('帰国者・接触者 電話相談センター') }}
+        <div :class="[$style.AdvisoryContentsTitle, 'mt-4']">
+          {{ $t('帰国者・接触者 相談センター') }}
         </div>
         <div>
           <div :class="[$style.AdvisoryBoxContainer, $style.AdvisoryWhiteBox]">
@@ -52,7 +47,7 @@
     border: 3px solid #4d4d4d;
     border-radius: 4px;
     height: 100%;
-    padding: 30px 20px 20px 20px;
+    padding: 30px 12px 20px 12px;
     margin-bottom: 10px;
     text-align: center;
   }
@@ -65,7 +60,7 @@
     }
 
     &Title {
-      font-size: 26px;
+      font-size: 21px;
       line-height: 28px;
     }
 
@@ -75,10 +70,6 @@
 
     &SubTitle {
       font-size: 18px;
-    }
-
-    &ColsSentense {
-      line-height: 18px;
     }
   }
 

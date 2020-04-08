@@ -48,30 +48,30 @@ import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import { ChartOptions } from 'chart.js'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import agencyData from '@/data/agency.json'
+// import agencyData from '@/data/agency.json'
 import DataView from '@/components/DataView.vue'
-import { triple as colors } from '@/utils/colors'
+// import { triple as colors } from '@/utils/colors'
 
 interface HTMLElementEvent<T extends HTMLElement> extends MouseEvent {
   currentTarget: T
 }
 type Data = {
   canvas: boolean
-  chartData: typeof agencyData
-  date: string
+  // chartData: typeof agencyData
+  // date: string
   agencies: VueI18n.TranslateResult[]
 }
 type Methods = {}
 type Computed = {
   displayData: {
-    labels: string[]
+    /* labels: string[]
     datasets: {
       label: string
       data: number[]
       backgroundColor: string
       borderColor: string
       borderWidth: object
-    }[]
+    }[] */
   }
   displayOption: ChartOptions
   tableHeaders: {
@@ -131,21 +131,21 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 
     return {
       canvas: true,
-      chartData: agencyData,
-      date: agencyData.date,
+      // chartData: agencyData,
+      // date: agencyData.date,
       agencies
     }
   },
   computed: {
     displayData() {
-      const borderColor = '#ffffff'
+      /* const borderColor = '#ffffff'
       const borderWidth = [
         { left: 0, top: 1, right: 0, bottom: 0 },
         { left: 0, top: 1, right: 0, bottom: 0 },
         { left: 0, top: 0, right: 0, bottom: 0 }
-      ]
+      ] */
       return {
-        labels: this.chartData.labels as string[],
+        /* labels: this.chartData.labels as string[],
         datasets: this.chartData.datasets.map((item, index) => {
           return {
             label: this.agencies[index] as string,
@@ -154,7 +154,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             borderColor,
             borderWidth: borderWidth[index]
           }
-        })
+        }) */
       }
     },
     displayOption() {
@@ -228,13 +228,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     tableHeaders() {
       return [
-        { text: this.$t('日付'), value: 'text' },
+        /* { text: this.$t('日付'), value: 'text' },
         ...this.displayData.datasets.map((text, value) => {
           return { text: text.label, value: String(value) }
-        })
+        }) */
       ]
     },
-    tableData() {
+    /* tableData() {
       return this.displayData.datasets[0].data.map((_, i) => {
         return Object.assign(
           { text: this.displayData.labels[i] as string },
@@ -245,6 +245,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           })
         )
       })
+    } */
+    tableData() {
+      return []
     }
   },
   mounted() {
