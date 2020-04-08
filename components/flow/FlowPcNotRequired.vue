@@ -36,7 +36,12 @@
             <span>{{ $t('症状が良くならない場合は') }}</span>
           </template>
           <template v-slot:advisory>
-            <strong>{{ $t('帰国者・接触者 相談センター') }}</strong>
+            <div>
+              <strong :class="$style.strongLarger">{{
+                $t('新型コロナ専用健康相談窓口')
+              }}</strong>
+              <strong>{{ $t('（帰国者・接触者相談センター）') }}</strong>
+            </div>
           </template>
         </i18n>
       </div>
@@ -121,7 +126,11 @@
   }
 
   strong {
-    font-size: 1.5rem;
+    &.strongLarger {
+      font-size: 1.4rem;
+    }
+
+    display: block;
   }
 }
 </style>
