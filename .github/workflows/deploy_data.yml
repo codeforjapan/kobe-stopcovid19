@@ -1,0 +1,53 @@
+name: deploy data
+on:
+  schedule:
+    - cron:  '*/15 * * * *'
+
+jobs:
+  deploy-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout development branch
+        uses: actions/checkout@v2
+        with:
+          ref: development
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r tool/requirements.txt
+      - name: Run script
+        run: |
+          python tool/main.py
+      - name: Move xlsx files
+        run: |
+          mv data/*.xlsx static/data
+      - name: Create Pull Request (for development)
+        uses: peter-evans/create-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: update data `date '+%Y-%m-%dT%H:%M:%SZ'`
+          title: ${{ format('Update json data {0}', github.event.head_commit.timestamp) }} (for development)
+          labels: auto_merge
+          branch: update-data/development
+      - name: Checkout master branch
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          path: master
+      - name: Copy files
+        run: |
+          cp data/*.json master/data
+          cp static/data/*.xlsx master/static/data
+      - name: Create Pull Request (for master)
+        uses: peter-evans/create-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: master
+          base: master
+          commit-message: update data `date '+%Y-%m-%dT%H:%M:%SZ'`
+          title: ${{ format('Update json data {0}', github.event.head_commit.timestamp) }} (for master)
+          branch: update-data/master
