@@ -8,7 +8,7 @@
       :date="Data.patients.date"
       :unit="$t('人')"
       :url="
-        'https://www.city.kobe.lg.jp/a57337/kenko/health/corona_zokusei.html'
+        'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html#shinaijokyo'
       "
     />
   </v-col>

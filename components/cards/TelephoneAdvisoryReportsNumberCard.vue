@@ -7,6 +7,9 @@
       :chart-data="windowContactsGraph"
       :date="Data.window_contacts.date"
       :unit="$t('件.reports')"
+      :url="
+        'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html#sodan'
+      "
     />
     <!-- 件.reports = 窓口相談件数 -->
   </v-col>

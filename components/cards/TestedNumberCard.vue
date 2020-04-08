@@ -29,7 +29,7 @@
       :date="Data.inspections_summary.date"
       :unit="$t('人')"
       :url="
-        'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html'
+        'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html#shinaijokyo'
       "
     />
   </v-col>

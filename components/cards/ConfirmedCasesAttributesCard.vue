@@ -8,7 +8,7 @@
       :date="Data.patients.date"
       :info="sumInfoOfPatients"
       :url="
-        'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html'
+        'https://www.city.kobe.lg.jp/a57337/kenko/health/corona_zokusei.html'
       "
       :source="$t('オープンデータを入手')"
     />
