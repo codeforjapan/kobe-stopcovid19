@@ -22,8 +22,7 @@ class DataJson:
         self.last_update = datetime.today().astimezone(jst).strftime("%Y/%m/%d %H:%M")
         self._data_json = {}
         # 以下内部変数
-        self._window_contacts_json = {}
-        self._center_contacts_json = {}
+        self._contacts_summary_json = {}
         self._health_center_summary_json = {}
         self._patients_json = {}
         self._patients_summary_json = {}
@@ -41,15 +40,10 @@ class DataJson:
             self.make_data()
         return self._data_json
 
-    def window_contacts_json(self) -> Dict:
-        if not self._window_contacts_json:
+    def contacts_summary_json(self) -> Dict:
+        if not self._contacts_summary_json:
             self.make_contacts()
-        return self._window_contacts_json
-
-    def center_contacts_json(self) -> Dict:
-        if not self._center_contacts_json:
-            self.make_contacts()
-        return self._center_contacts_json
+        return self._contacts_summary_json
 
     def health_center_summary_json(self) -> Dict:
         if not self._health_center_summary_json:
@@ -78,8 +72,7 @@ class DataJson:
 
     def make_data(self) -> None:
         self._data_json = {
-            "window_contacts": self.window_contacts_json(),
-            "center_contacts": self.center_contacts_json(),
+            "contacts_summary": self.contacts_summary_json(),
             "health_center_summary": self.health_center_summary_json(),
             "patients": self.patients_json(),
             "patients_summary": self.patients_summary_json(),
@@ -89,44 +82,48 @@ class DataJson:
         }
 
     def make_contacts(self) -> None:
-        # 最終データの日を最終更新日とする
+        # 最終データの日の次の日を最終更新日とする
         last_update = (
-            self.contacts_sheet.cell(row=self.contacts_count - 1, column=1).value
+            self.contacts_sheet.cell(row=self.contacts_count - 1, column=1).value +
+            timedelta(days=1)
         ).strftime("%Y/%m/%d %H:%M")
-        # window_contactsとcenter_contacts、health_center_summaryを同時に生成する。
+        # contacts_summaryとhealth_center_summaryを同時に生成する。
         # スクリプト実行時間短縮のため、同時に生成している。
-        self._window_contacts_json = template_json(last_update)
-        self._center_contacts_json = template_json(last_update)
+        self._contacts_summary_json = template_json(last_update)
         self._health_center_summary_json = template_json(last_update)
 
+        column_name = self.contacts_sheet.cell(row=contacts_first_cell - 1, column=2).value.replace("\n", "")
+        health_center_field = 6
+
         for i in range(contacts_first_cell, self.contacts_count):
-            window_data = {}
-            center_data = {}
-            health_center_data = {}
             # 日時の取得
             # date = excel_date(self.contacts_sheet.cell(row=i, column=1).value)
             date = self.contacts_sheet.cell(row=i, column=1).value + timedelta(hours=8)
-            # 日別窓口相談者数の取得
-            window_contacts = self.contacts_sheet.cell(row=i, column=2).value
-            # 日別帰国者・接触者コールセンター相談者数の取得
-            center_contacts = self.contacts_sheet.cell(row=i, column=4).value
+            if "健康相談窓口" in column_name and "帰国者・接触者相談センター" in column_name:
+                # 日別窓口(相談センター)相談者数の取得
+                contacts = self.contacts_sheet.cell(row=i, column=2).value
+                # Excelのセル内に0すら入っていないときはNoneが返ってくるので、0を代入しなおす。
+                if contacts is None:
+                    contacts = 0
+                health_center_field = 4
+            else:
+                # 日別窓口相談者数の取得
+                window_contacts = self.contacts_sheet.cell(row=i, column=2).value
+                # 日別帰国者・接触者コールセンター相談者数の取得
+                center_contacts = self.contacts_sheet.cell(row=i, column=4).value
+                # Excelのセル内に0すら入っていないときはNoneが返ってくるので、0を代入しなおす。
+                if window_contacts is None:
+                    window_contacts = 0
+                if center_contacts is None:
+                    center_contacts = 0
+                contacts = window_contacts + center_contacts
             # 日別保健所・保健センター相談者数の取得
-            health_center = self.contacts_sheet.cell(row=i, column=6).value
+            health_center = self.contacts_sheet.cell(row=i, column=health_center_field).value
             # Excelのセル内に0すら入っていないときはNoneが返ってくるので、0を代入しなおす。
-            if window_contacts is None:
-                window_contacts = 0
-            if center_contacts is None:
-                center_contacts = 0
             if health_center is None:
                 health_center = 0
-            # iso formatで日時を代入
-            window_data["日付"] = center_data["日付"] = health_center_data["日付"] = date.isoformat() + "Z"
-            window_data["小計"] = window_contacts
-            center_data["小計"] = center_contacts
-            health_center_data["小計"] = health_center
-            self._window_contacts_json["data"].append(window_data)
-            self._center_contacts_json["data"].append(center_data)
-            self._health_center_summary_json["data"].append(health_center_data)
+            self._contacts_summary_json["data"].append(make_data(date.isoformat() + "Z", contacts))
+            self._health_center_summary_json["data"].append(make_data(date.isoformat() + "Z", health_center))
 
     def make_patients(self) -> None:
         # HTMLから最終更新日を取得する
@@ -174,9 +171,10 @@ class DataJson:
         self._patients_json["data"].sort(key=lambda x: x['date'])
 
     def make_summaries(self) -> None:
-        # 最終データの日を最終更新日とする
+        # 最終データの日の次の日を最終更新日とする
         last_update = (
-            self.main_summary_sheet.cell(row=self.summary_count - 1, column=1).value
+            self.main_summary_sheet.cell(row=self.summary_count - 1, column=1).value +
+            timedelta(days=1)
         ).strftime("%Y/%m/%d %H:%M")
         # patients_summaryとinspections_summaryを同時に生成する
         # スクリプト実行時間短縮のため、同時に生成している。

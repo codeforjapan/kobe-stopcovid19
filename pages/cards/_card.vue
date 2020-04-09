@@ -21,16 +21,16 @@
     <telephone-advisory-reports-number-card
       v-else-if="
         this.$route.params.card ==
-          'number-of-reports-to-covid19-health-consultation-desk'
+          'number-of-reports-to-health-consultation-desk'
       "
     />
-    <consultation-desk-reports-number-card
+    <!--<consultation-desk-reports-number-card
       v-else-if="
         this.$route.params.card ==
           'number-of-reports-to-returnee-contact-center'
       "
     />
-    <!--<metro-card
+    <metro-card
       v-else-if="
         this.$route.params.card == 'predicted-number-of-toei-subway-passengers'
       "
@@ -56,8 +56,8 @@ import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttri
 import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
 // import InspectionPersonsNumberCard from '@/components/cards/InspectionPersonsNumberCard.vue'
 import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
-import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
 /*
+import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
 import MetroCard from '@/components/cards/MetroCard.vue'
 import AgencyCard from '@/components/cards/AgencyCard.vue'
  */
@@ -72,8 +72,8 @@ export default {
     TestedNumberCard,
     // InspectionPersonsNumberCard,
     TelephoneAdvisoryReportsNumberCard,
-    ConsultationDeskReportsNumberCard,
-    /* MetroCard,
+    /* ConsultationDeskReportsNumberCard,
+    MetroCard,
     AgencyCard, */
     HealthCenterDeskReportsNumberCard
   },
@@ -105,14 +105,14 @@ export default {
         title = this.$t('検査実施人数')
         updatedAt = Data.inspection_persons.date
         break */
-      case 'number-of-reports-to-covid19-health-consultation-desk':
-        title = this.$t('新型コロナ健康相談窓口 相談件数')
-        updatedAt = Data.window_contacts.date
+      case 'number-of-reports-to-health-consultation-desk':
+        title = this.$t('健康相談窓口(帰国者・接触者相談センター) 相談件数')
+        updatedAt = Data.contacts_summary.date
         break
-      case 'number-of-reports-to-returnee-contact-center':
+      /* case 'number-of-reports-to-returnee-contact-center':
         title = this.$t('帰国者・接触者相談センター 相談件数')
         updatedAt = Data.center_contacts.date
-        break
+        break */
       /* case 'predicted-number-of-toei-subway-passengers':
         title = this.$t('都営地下鉄の利用者数の推移')
         updatedAt = MetroData.date

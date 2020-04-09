@@ -35,8 +35,8 @@
       <!--<inspection-persons-number-card />-->
       <tested-number-card />
       <telephone-advisory-reports-number-card />
-      <consultation-desk-reports-number-card />
-      <!--<metro-card />
+      <!--<consultation-desk-reports-number-card />
+      <metro-card />
       <agency-card />-->
       <health-center-desk-reports-number-card />
     </v-row>
@@ -58,9 +58,11 @@ import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttri
 import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
 // import InspectionPersonsNumberCard from '@/components/cards/InspectionPersonsNumberCard.vue'
 import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
+/*
 import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
-// import MetroCard from '@/components/cards/MetroCard.vue'
-// import AgencyCard from '@/components/cards/AgencyCard.vue'
+import MetroCard from '@/components/cards/MetroCard.vue'
+import AgencyCard from '@/components/cards/AgencyCard.vue'
+ */
 import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
 import HealthCenterDeskReportsNumberCard from '@/components/cards/HealthCenterDeskReportsNumberCard.vue'
 
@@ -76,8 +78,8 @@ export default Vue.extend({
     TestedNumberCard,
     // InspectionPersonsNumberCard,
     TelephoneAdvisoryReportsNumberCard,
-    ConsultationDeskReportsNumberCard,
-    /* MetroCard,
+    /* ConsultationDeskReportsNumberCard,
+    MetroCard,
     AgencyCard, */
     HealthCenterDeskReportsNumberCard
   },
