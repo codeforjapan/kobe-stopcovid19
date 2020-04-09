@@ -21,7 +21,8 @@
             <td class="RowHeader" v-bind="headingAttrs">
               <dl>
                 <dt class="Name">
-                  {{ $t('新型コロナウィルス専用健康相談窓口') }}
+                  <span> {{ $t('新型コロナウイルス専用健康相談窓口') }} </span>
+                  <span> {{ $t('（帰国者・接触者相談センター）') }} </span>
                 </dt>
                 <dd class="Tel">
                   <a href="tel:0783226250">078-322-6250</a>
@@ -29,37 +30,34 @@
               </dl>
             </td>
             <td class="Content">
-              {{
-                $t(
-                  '予防に関すること、感染症・健康不安に対する一般的な相談のある方'
-                )
-              }}
-            </td>
-          </tr>
-          <tr>
-            <td class="RowHeader" v-bind="headingAttrs">
-              <dl>
-                <dt class="Name">{{ $t('帰国者・接触者相談センター') }}</dt>
-                <dd class="Tel"><a href="tel:0783226829">078-322-6829</a></dd>
-              </dl>
-              <p class="Notes">
-                {{
-                  $t(
-                    'お電話がつながりにくい場合は、上記専用健康相談窓口におかけください。'
-                  )
-                }}
-              </p>
-            </td>
-            <td class="Content">
               <ul>
-                <li>{{ $t('感染者との接触があった方') }}</li>
-                <li>{{ $t('湖北省等に渡航歴等のある方 ') }}</li>
                 <li>
-                  {{ $t('風邪の症状や37.5℃以上の発熱が4日以上続いている方') }}
+                  {{
+                    $t(
+                      '予防に関すること、感染症・健康不安に対する一般的な相談のある方'
+                    )
+                  }}
+                </li>
+                <li>
+                  {{ $t('下記事項のいずれかに該当する方') }}
+                  <ol>
+                    <li>
+                      {{ $t('感染者との接触があり、発熱などの症状のある方') }}
+                    </li>
+                    <li>
+                      {{
+                        $t('湖北省等に渡航歴等があり、発熱などの症状のある方 ')
+                      }}
+                    </li>
+                    <li>
+                      {{
+                        $t('風邪の症状や37.5℃以上の発熱が4日以上続いている方')
+                      }}
+                    </li>
+                  </ol>
                 </li>
               </ul>
-              {{ $t('など') }}
-              <strong>{{ $t('（下記の相談対象者参照）') }}</strong>
+              {{ $t('（詳細は下記相談対象者参照）') }}
             </td>
           </tr>
           <tr>
@@ -88,7 +86,7 @@
     </StaticCard>
     <StaticCard>
       <h3>
-        {{ $t('帰国者・接触者相談センターの相談対象者') }}
+        {{ $t('相談対象者（帰国者・接触者相談センター）') }}
       </h3>
       <table class="Contacts-SubjectDetailsTable" v-bind="tableAttrs">
         <tbody>
@@ -363,7 +361,7 @@ export default Vue.extend({
     }
 
     td {
-      padding: 0 16px;
+      padding: 16px;
       font-size: 14px;
     }
 
@@ -447,6 +445,11 @@ export default Vue.extend({
       margin-left: 0;
       font-weight: bold;
     }
+
+    > span {
+      display: block;
+    }
+
     @include lessThan($medium) {
       .Notes {
         font-weight: normal;
