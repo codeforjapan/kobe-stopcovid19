@@ -8,7 +8,10 @@
         <span>{{ $t('最終更新') }} </span>
         <time :datetime="updatedAt">{{ Data.lastUpdate }}</time>
       </div>
-      <div v-if="!['ja', 'ja-basic'].includes($i18n.locale)" class="Annotation">
+      <div
+        v-show="!['ja', 'ja-basic'].includes($i18n.locale)"
+        class="Annotation"
+      >
         <span>{{ $t('注釈') }} </span>
       </div>
     </div>
@@ -19,19 +22,23 @@
       :text="$t('自分や家族の症状に不安や心配があればまずは電話相談をどうぞ')"
       :btn-text="$t('相談の手順を見る')"
     />
+    <static-info
+      class="mb-4"
+      url="https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus.html"
+      :text="$t('市民の皆さまへ')"
+    />
     <v-row class="DataBlock">
       <confirmed-cases-details-card />
-      <tested-cases-details-card />
+      <!--<tested-cases-details-card />-->
       <confirmed-cases-attributes-card />
       <confirmed-cases-number-card />
-      <inspection-persons-number-card />
+      <!--<inspection-persons-number-card />-->
       <tested-number-card />
       <telephone-advisory-reports-number-card />
-      <consultation-desk-reports-number-card />
+      <!--<consultation-desk-reports-number-card />
       <metro-card />
-      <agency-card />
-      <shinjuku-visitors-card />
-      <chiyoda-visitors-card />
+      <agency-card />-->
+      <health-center-desk-reports-number-card />
     </v-row>
   </div>
 </template>
@@ -45,18 +52,19 @@ import StaticInfo from '@/components/StaticInfo.vue'
 import Data from '@/data/data.json'
 import News from '@/data/news.json'
 import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
-import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
+// import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
 import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
 import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
 import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
-import InspectionPersonsNumberCard from '@/components/cards/InspectionPersonsNumberCard.vue'
+// import InspectionPersonsNumberCard from '@/components/cards/InspectionPersonsNumberCard.vue'
 import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
+/*
 import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
 import MetroCard from '@/components/cards/MetroCard.vue'
 import AgencyCard from '@/components/cards/AgencyCard.vue'
+ */
 import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
-import ShinjukuVisitorsCard from '@/components/cards/ShinjukuVisitorsCard.vue'
-import ChiyodaVisitorsCard from '@/components/cards/ChiyodaVisitorsCard.vue'
+import HealthCenterDeskReportsNumberCard from '@/components/cards/HealthCenterDeskReportsNumberCard.vue'
 
 export default Vue.extend({
   components: {
@@ -64,24 +72,23 @@ export default Vue.extend({
     WhatsNew,
     StaticInfo,
     ConfirmedCasesDetailsCard,
-    TestedCasesDetailsCard,
+    // TestedCasesDetailsCard,
     ConfirmedCasesNumberCard,
     ConfirmedCasesAttributesCard,
     TestedNumberCard,
-    InspectionPersonsNumberCard,
+    // InspectionPersonsNumberCard,
     TelephoneAdvisoryReportsNumberCard,
-    ConsultationDeskReportsNumberCard,
+    /* ConsultationDeskReportsNumberCard,
     MetroCard,
-    AgencyCard,
-    ShinjukuVisitorsCard,
-    ChiyodaVisitorsCard
+    AgencyCard, */
+    HealthCenterDeskReportsNumberCard
   },
   data() {
     const data = {
       Data,
       headerItem: {
         icon: 'mdi-chart-timeline-variant',
-        title: this.$t('県内の最新感染動向')
+        title: this.$t('神戸市市内の最新感染動向')
       },
       newsItems: News.newsItems
     }
@@ -94,7 +101,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: this.$t('県内の最新感染動向') as string
+      title: this.$t('神戸市市内の最新感染動向') as string
     }
   }
 })

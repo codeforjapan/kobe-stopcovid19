@@ -1,13 +1,15 @@
 <template>
   <v-col cols="12" md="6" class="DataCard">
     <time-bar-chart
-      :title="$t('新型コロナコールセンター相談件数')"
-      :title-id="'number-of-reports-to-covid19-telephone-advisory-center'"
-      :chart-id="'time-bar-chart-contacts'"
+      :title="$t('健康相談窓口(帰国者・接触者相談センター) 相談件数')"
+      :title-id="'number-of-reports-to-health-consultation-desk'"
+      :chart-id="'time-bar-chart-window-contacts'"
       :chart-data="contactsGraph"
-      :date="Data.contacts.date"
+      :date="Data.contacts_summary.date"
       :unit="$t('件.reports')"
-      :url="'https://catalog.data.metro.tokyo.lg.jp/dataset/t000010d0000000071'"
+      :url="
+        'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html#sodan'
+      "
     />
     <!-- 件.reports = 窓口相談件数 -->
   </v-col>
@@ -23,8 +25,8 @@ export default {
     TimeBarChart
   },
   data() {
-    // 相談件数
-    const contactsGraph = formatGraph(Data.contacts.data)
+    // 健康相談窓口(帰国者・接触者相談センター) 相談件数
+    const contactsGraph = formatGraph(Data.contacts_summary.data)
 
     const data = {
       Data,

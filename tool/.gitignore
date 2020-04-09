@@ -1,1 +1,7 @@
-vendor
+/venv
+/.idea
+
+*.pyc
+
+*.xlsx
+*.json

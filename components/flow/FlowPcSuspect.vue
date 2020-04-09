@@ -1,17 +1,13 @@
 <template>
   <div :class="$style.FlowComponent">
     <div :class="[$style.SubtleBox, $style.Box1]">
-      <img
-        :class="$style.Box1Icon"
-        src="/flow/flow_arrow.svg"
-        aria-hidden="true"
-      />
       <div :class="$style.RowItems">
         <div :class="$style.RowItemsHeader">
           <img
             :class="$style.RowItemsHeaderIcon"
             src="/flow/sentiment_very_dissatisfied-24px.svg"
             aria-hidden="true"
+            alt=" "
           />
           {{ $t('不安に思う方') }}
         </div>
@@ -22,6 +18,7 @@
             :class="$style.CheckBoxIcon"
             src="/flow/check_circle-24px.svg"
             aria-hidden="true"
+            alt=" "
           />
           {{ $t('微熱') }}
         </div>
@@ -30,6 +27,7 @@
             :class="$style.CheckBoxIcon"
             src="/flow/check_circle-24px.svg"
             aria-hidden="true"
+            alt=" "
           />
           {{ $t('軽い咳') }}
         </div>
@@ -38,29 +36,10 @@
             :class="$style.CheckBoxIcon"
             src="/flow/check_circle-24px.svg"
             aria-hidden="true"
+            alt=" "
           />
           {{ $t('感染の不安') }}
         </div>
-      </div>
-    </div>
-
-    <div :class="[$style.SubtleBox, $style.Box2, $style.Center]">
-      <div :class="$style.LargerText">
-        {{ $t('新型コロナコールセンター') }}
-      </div>
-      <div :class="$style.SmallerText">
-        {{ $t('午前9時から午後9時（土日祝含む）') }}
-      </div>
-
-      <div :class="$style.Tel">
-        <a :class="$style.TelLink" href="tel:0570550571">
-          <img
-            :class="$style.TelLinkIcon"
-            src="/flow/phone-24px.svg"
-            aria-hidden="true"
-          />
-          0570-550571
-        </a>
       </div>
     </div>
   </div>
@@ -92,7 +71,9 @@
   &:focus {
     color: inherit;
     text-decoration: none;
-    outline: 1px dotted $gray-3;
+    @media screen {
+      outline: 1px dotted $gray-3;
+    }
   }
 
   &Icon {
@@ -150,30 +131,8 @@
   position: relative;
   flex-grow: 0;
   flex-shrink: 0;
-  width: 60%;
+  width: 100%;
   flex-direction: row;
-
-  &Icon {
-    position: absolute;
-    bottom: 40%;
-    right: -30px;
-    z-index: 1;
-    display: block;
-    width: 46px;
-    height: 46px;
-  }
-}
-
-.Box2 {
-  flex-grow: 0;
-  flex-shrink: 0;
-  width: 38%;
-  flex-direction: column;
-  justify-content: center;
-
-  div {
-    margin: 0.5em;
-  }
 }
 
 .RowItems {
@@ -206,6 +165,9 @@
 .LargerText {
   font-size: larger;
   font-weight: bold;
+  @media print {
+    width: 65%;
+  }
 }
 
 .Center {

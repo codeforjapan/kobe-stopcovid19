@@ -8,24 +8,24 @@
       <PrinterButton :wrapper-class="'Flow-PullRight'" to="/print/flow" />
     </div>
     <div>
-      <div class="only-pc">
-        <flow-pc />
-      </div>
-      <div class="only-sp">
-        <flow-sp />
-      </div>
-      <div class="Flow-Card-Button-Wrapper mt-6">
+      <div class="Flow-Card-Button-Wrapper">
         <a
-          href="https://www.fukushihoken.metro.tokyo.lg.jp/iryo/kansen/coronasodan.html"
+          href="https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus.html#soudansaki"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           class="Flow-Card-Button"
         >
-          {{ $t('詳細を見る（神戸市福祉保健局）') }}
+          {{ $t('詳細を見る（神戸市健康局）') }}
           <v-icon class="Flow-Card-Button-ExternalLinkIcon" size="20">
             mdi-open-in-new
           </v-icon>
         </a>
+      </div>
+      <div class="only-pc" aria-hidden="true">
+        <flow-pc />
+      </div>
+      <div class="only-sp">
+        <flow-sp />
       </div>
     </div>
   </div>
@@ -66,7 +66,7 @@ export default Vue.extend({
   &-Heading {
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
 
     > svg {
       width: 30px;
@@ -86,6 +86,8 @@ export default Vue.extend({
     @include button-text('md');
     @include font-size(20);
 
+    width: 100%;
+    max-width: 600px;
     font-weight: bold;
     display: inline-block;
     text-decoration: none;
@@ -93,6 +95,7 @@ export default Vue.extend({
 
     &-Wrapper {
       text-align: center;
+      margin-bottom: 20px;
     }
 
     &:hover {
@@ -103,6 +106,13 @@ export default Vue.extend({
       margin-left: 2px;
       color: $green-1 !important;
     }
+
+    &-Description {
+      margin-bottom: 12px;
+      display: block;
+      font-weight: normal;
+      text-align: left;
+    }
   }
 
   &-PullRight {
@@ -112,7 +122,7 @@ export default Vue.extend({
 
 @include largerThan($medium) {
   .only-sp {
-    display: none;
+    @include visually-hidden;
   }
 
   .only-pc {
@@ -121,10 +131,6 @@ export default Vue.extend({
 }
 
 @include lessThan($medium) {
-  .only-sp {
-    display: block;
-  }
-
   .only-pc {
     display: none;
   }

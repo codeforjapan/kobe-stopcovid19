@@ -1,11 +1,15 @@
 <template>
-  <data-view :title="title" :title-id="titleId" :date="date" :url="url">
+  <data-view :title="title" :title-id="titleId" :date="date">
     <template v-slot:infoPanel>
       <small :class="$style.DataViewDesc">
         <slot name="description" />
       </small>
     </template>
+    <h4 :id="`${titleId}-graph`" class="visually-hidden">
+      {{ $t(`{title}のグラフ`, { title }) }}
+    </h4>
     <bar
+      :ref="'barChart'"
       :style="{ display: canvas ? 'block' : 'none' }"
       :chart-id="chartId"
       :chart-data="displayData"
@@ -44,30 +48,30 @@ import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import { ChartOptions } from 'chart.js'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import agencyData from '@/data/agency.json'
+// import agencyData from '@/data/agency.json'
 import DataView from '@/components/DataView.vue'
-import { triple as colors } from '@/utils/colors'
+// import { triple as colors } from '@/utils/colors'
 
 interface HTMLElementEvent<T extends HTMLElement> extends MouseEvent {
   currentTarget: T
 }
 type Data = {
   canvas: boolean
-  chartData: typeof agencyData
-  date: string
+  // chartData: typeof agencyData
+  // date: string
   agencies: VueI18n.TranslateResult[]
 }
 type Methods = {}
 type Computed = {
   displayData: {
-    labels: string[]
+    /* labels: string[]
     datasets: {
       label: string
       data: number[]
       backgroundColor: string
       borderColor: string
       borderWidth: object
-    }[]
+    }[] */
   }
   displayOption: ChartOptions
   tableHeaders: {
@@ -83,7 +87,6 @@ type Props = {
   titleId: string
   chartId: string
   unit: string
-  url: string
 }
 
 const options: ThisTypedComponentOptionsWithRecordProps<
@@ -117,11 +120,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       type: String,
       required: false,
       default: ''
-    },
-    url: {
-      type: String,
-      required: false,
-      default: ''
     }
   },
   data() {
@@ -130,26 +128,24 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       this.$t('第二庁舎計'),
       this.$t('議事堂計')
     ]
-    agencyData.datasets.map(dataset => {
-      dataset.label = this.$t(dataset.label) as string
-    })
+
     return {
       canvas: true,
-      chartData: agencyData,
-      date: agencyData.date,
+      // chartData: agencyData,
+      // date: agencyData.date,
       agencies
     }
   },
   computed: {
     displayData() {
-      const borderColor = '#ffffff'
+      /* const borderColor = '#ffffff'
       const borderWidth = [
         { left: 0, top: 1, right: 0, bottom: 0 },
         { left: 0, top: 1, right: 0, bottom: 0 },
         { left: 0, top: 0, right: 0, bottom: 0 }
-      ]
+      ] */
       return {
-        labels: this.chartData.labels as string[],
+        /* labels: this.chartData.labels as string[],
         datasets: this.chartData.datasets.map((item, index) => {
           return {
             label: this.agencies[index] as string,
@@ -158,7 +154,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             borderColor,
             borderWidth: borderWidth[index]
           }
-        })
+        }) */
       }
     },
     displayOption() {
@@ -232,13 +228,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     tableHeaders() {
       return [
-        { text: this.$t('日付'), value: 'text' },
+        /* { text: this.$t('日付'), value: 'text' },
         ...this.displayData.datasets.map((text, value) => {
           return { text: text.label, value: String(value) }
-        })
+        }) */
       ]
     },
-    tableData() {
+    /* tableData() {
       return this.displayData.datasets[0].data.map((_, i) => {
         return Object.assign(
           { text: this.displayData.labels[i] as string },
@@ -249,6 +245,20 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           })
         )
       })
+    } */
+    tableData() {
+      return []
+    }
+  },
+  mounted() {
+    const barChart = this.$refs.barChart as Vue
+    const barElement = barChart.$el
+    const canvas = barElement.querySelector('canvas')
+    const labelledbyId = `${this.titleId}-graph`
+
+    if (canvas) {
+      canvas.setAttribute('role', 'img')
+      canvas.setAttribute('aria-labelledby', labelledbyId)
     }
   }
 }

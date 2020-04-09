@@ -1,23 +1,27 @@
 <template>
   <div :class="[$style.container, $style.according]">
     <i18n tag="div" :class="$style.heading" path="{advisory}による相談結果">
-      <span :class="[$style.fzLarge, $style.break]" place="advisory">
-        {{ $t('新型コロナ受診相談窓口') }}
-      </span>
+      <template v-slot:advisory>
+        <span :class="[$style.fzLarge, $style.break]">
+          {{ $t('新型コロナ受診相談窓口') }}
+        </span>
+      </template>
     </i18n>
     <i18n
       tag="p"
       :class="$style.diag"
-      path="新型コロナ外来 {advice} と判断された場合"
+      path="帰国者・接触者外来 {advice} と判断された場合"
     >
-      <span :class="[$style.fzXLLarge, $style.break]" place="advice">
-        {{ $t('受診が必要') }}
-      </span>
+      <template v-slot:advice>
+        <span :class="[$style.fzXLLarge, $style.break]">
+          {{ $t('受診が必要') }}
+        </span>
+      </template>
     </i18n>
     <p :class="$style.decision">
       <template v-if="!langsWithoutOutpatient.includes($i18n.locale)">
         <span :class="$style.fzSmall">
-          {{ $t('新型コロナ外来（帰国者・接触者外来）') }}
+          {{ $t('帰国者・接触者外来') }}
         </span>
         <span :class="[$style.fzLarge, $style.break]">{{
           $t('医師による判断')
@@ -37,9 +41,11 @@
       >
         <p>
           <i18n path="検査の必要{ifRequired}">
-            <span :class="[$style.fzXLarge, $style.break]" place="ifRequired">
-              {{ $t('なし') }}
-            </span>
+            <template v-slot:ifRequired>
+              <span :class="[$style.fzXLarge, $style.break]">
+                {{ $t('なし') }}
+              </span>
+            </template>
           </i18n>
         </p>
         <div :class="$style.arrow" aria-hidden="true">
@@ -53,9 +59,11 @@
       >
         <p>
           <i18n path="検査の必要{ifRequired}">
-            <span :class="[$style.fzXLarge, $style.break]" place="ifRequired">
-              {{ $t('あり') }}
-            </span>
+            <template v-slot:ifRequired>
+              <span :class="[$style.fzXLarge, $style.break]">
+                {{ $t('あり') }}
+              </span>
+            </template>
           </i18n>
         </p>
         <div :class="$style.arrow" aria-hidden="true">
@@ -71,7 +79,7 @@
         <!-- eslint-enable -->
       </span>
       <span :class="$style.break">
-        {{ $t('神戸市健康安全研究センター等') }}
+        {{ $t('神戸市環境保健研究所等') }}
       </span>
       <small :class="[$style.note, $style.fzSmall, $style.break]">
         {{
@@ -111,11 +119,13 @@
       id="not_required"
       tag="p"
       :class="[$style.diag, $style.hr]"
-      path="新型コロナ外来 {advice} と判断された場合"
+      path="帰国者・接触者外来 {advice} と判断された場合"
     >
-      <span :class="[$style.break, $style.fzXLLarge]" place="advice">
-        {{ $t('受診が不要') }}
-      </span>
+      <template v-slot:advice>
+        <span :class="[$style.break, $style.fzXLLarge]">
+          {{ $t('受診が不要') }}
+        </span>
+      </template>
     </i18n>
     <div :class="[$style.rectContainer, $style.double]">
       <div :class="[$style.rect, $style.solution]">
@@ -133,10 +143,19 @@
       <div :class="[$style.rect, $style.consult]">
         <p>
           <i18n path="{getWorse}{advisory}に相談">
-            <i18n place="getWorse" path="症状が良くならない場合は" />
-            <strong :class="$style.advisory" place="advisory">
-              {{ $t('新型コロナ受診相談窓口（日本語のみ）') }}
-            </strong>
+            <template v-slot:getWorse>
+              <span>{{ $t('症状が良くならない場合は') }}</span>
+            </template>
+            <template v-slot:advisory>
+              <div>
+                <strong :class="$style.advisoryLarger">{{
+                  $t('新型コロナ専用健康相談窓口')
+                }}</strong>
+                <strong :class="$style.advisory">{{
+                  $t('（帰国者・接触者相談センター）')
+                }}</strong>
+              </div>
+            </template>
           </i18n>
         </p>
       </div>
@@ -250,7 +269,11 @@ export default {
     }
 
     .advisory {
-      font-size: px2vw(38);
+      font-size: px2vw(28);
+      &Larger {
+        font-size: px2vw(38);
+      }
+
       display: block;
       margin-top: px2vw(10);
       margin-bottom: px2vw(10);
@@ -340,7 +363,11 @@ export default {
       }
 
       .advisory {
-        font-size: px2vw(38, $vw);
+        font-size: px2vw(28, $vw);
+        &Larger {
+          font-size: px2vw(38, $vw);
+        }
+
         margin-top: px2vw(10, $vw);
         margin-bottom: px2vw(10, $vw);
       }

@@ -34,24 +34,26 @@
       </v-icon>
 
       <nav class="SideNavigation-Menu">
-        <MenuList :items="items" @click="$emit('closeNavi', $event)" />
-        <div
-          v-if="this.$i18n.locales.length > 1"
-          class="SideNavigation-Language"
-        >
-          <label class="SideNavigation-LanguageLabel" for="LanguageSelector">
-            {{ $t('多言語対応選択メニュー') }}
-          </label>
-          <LanguageSelector />
+        <div class="SideNavigation-Language">
+          <div
+            v-if="this.$i18n.locales.length > 1"
+            class="SideNavigation-Language"
+          >
+            <label class="SideNavigation-LanguageLabel" for="LanguageSelector">
+              {{ $t('多言語対応選択メニュー') }}
+            </label>
+            <LanguageSelector />
+          </div>
         </div>
+        <MenuList :items="items" @click="$emit('closeNavi', $event)" />
       </nav>
 
       <footer class="SideNavigation-Footer">
         <div class="SideNavigation-Social">
           <a
-            href="https://line.me/R/ti/p/%40822sysfc"
+            href="https://lin.ee/3TT6shh"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             class="SideNavigation-SocialLink"
           >
             <picture>
@@ -60,9 +62,9 @@
             </picture>
           </a>
           <a
-            href="https://twitter.com/tokyo_bousai"
+            href="https://twitter.com/kobekoho"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             class="SideNavigation-SocialLink"
           >
             <picture>
@@ -71,9 +73,9 @@
             </picture>
           </a>
           <a
-            href="https://www.facebook.com/tochokoho"
+            href="https://www.facebook.com/kobekoho/"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             class="SideNavigation-SocialLink"
           >
             <picture>
@@ -81,17 +83,17 @@
               <img src="/facebook.png" alt="Facebook" />
             </picture>
           </a>
-          <a
-            href="https://github.com/tokyo-metropolitan-gov/covid19"
+          <!--<a
+            href="https://github.com/codeforjapan/kobe-stopcovid19"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             class="SideNavigation-SocialLink"
           >
             <picture>
               <source srcset="/github.webp" type="image/webp" />
               <img src="/github.png" alt="GitHub" />
             </picture>
-          </a>
+          </a>-->
         </div>
         <small class="SideNavigation-Copyright">
           {{ $t('このサイトの内容物は') }}
@@ -105,7 +107,7 @@
           </a>
           {{ $t('の下に提供されています。') }}
           <br />
-          2020 Tokyo Metropolitan Government
+          2020 City of Kobe
         </small>
       </footer>
     </div>
@@ -141,57 +143,60 @@ export default Vue.extend({
       return [
         {
           icon: 'mdi-chart-timeline-variant',
-          title: this.$t('県内の最新感染動向'),
+          title: this.$t('神戸市市内の最新感染動向'),
           link: this.localePath('/')
         },
         {
           icon: 'CovidIcon',
           title: this.$t('新型コロナウイルス感染症が心配なときに'),
-          link: this.localePath('/flow'),
+          link: this.localePath('/flow')
+        },
+        {
+          icon: 'mdi-shield-alert',
+          title: this.$t('感染症対策について'),
+          link: this.localePath('/guide')
+        },
+        {
+          icon: 'mdi-phone-in-talk',
+          title: this.$t('神戸市電話相談窓口'),
+          link: this.localePath('/contacts')
+        },
+        {
+          icon: 'mdi-message-text',
+          title: this.$t('市長からのメッセージ'),
+          link:
+            'https://www.city.kobe.lg.jp/a57337/kenko/health/corona_shichokoment2.html',
           divider: true
         },
         {
           icon: 'ParentIcon',
-          title: this.$t('お子様をお持ちの皆様へ'),
-          link: this.localePath('/parent')
+          title: this.$t('お子様をお持ちの皆さまへ'),
+          link: 'https://www.city.kobe.lg.jp/a57337/kenko/coc.html'
         },
         {
           icon: 'mdi-account-multiple',
-          title: this.$t('都民の皆様へ'),
-          link: 'https://www.metro.tokyo.lg.jp/tosei/tosei/news/2019-ncov.html'
+          title: this.$t('市民の皆さまへ'),
+          link:
+            'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus.html'
         },
         {
           icon: 'mdi-domain',
-          title: this.$t('企業の皆様・はたらく皆様へ'),
-          link: this.localePath('/worker'),
+          title: this.$t('企業の皆さま・働く皆さまへ'),
+          link:
+            'https://www.city.kobe.lg.jp/a31812/coronavsupportsforbusiness.html',
           divider: true
         },
         {
-          title: this.$t('神戸市新型コロナウイルス感染症対策本部報'),
-          link:
-            'https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1007261/index.html'
-        },
-        {
-          title: this.$t('神戸市主催等 中止又は延期するイベント等'),
-          link:
-            'https://www.seisakukikaku.metro.tokyo.lg.jp/information/event00.html'
-        },
-        {
-          title: this.$t('知事からのメッセージ'),
-          link:
-            'https://www.metro.tokyo.lg.jp/tosei/governor/governor/katsudo/2020/03/03_00.html'
+          title: this.$t('神戸市主催など中止または延期するイベント'),
+          link: 'https://www.city.kobe.lg.jp/a57337/kenko/eventtyushi.html'
         },
         {
           title: this.$t('当サイトについて'),
           link: this.localePath('/about')
         },
         {
-          title: this.$t('お問い合わせ先一覧'),
-          link: this.localePath('/contacts')
-        },
-        {
           title: this.$t('神戸市公式ホームページ'),
-          link: 'https://www.metro.tokyo.lg.jp/'
+          link: 'https://www.city.kobe.lg.jp/'
         }
       ]
     }
@@ -355,10 +360,6 @@ export default Vue.extend({
   @include lessThan($small) {
     padding-top: 50px;
   }
-}
-
-.SideNavigation-Language {
-  padding-top: 20px;
 }
 
 .SideNavigation-LanguageLabel {

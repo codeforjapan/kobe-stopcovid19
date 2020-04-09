@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <v-app class="app">
     <v-overlay v-if="loading" color="#F8F9FA" opacity="1" z-index="9999">
       <div class="loader">
@@ -35,9 +35,11 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
+import Data from '@/data/data.json'
 import SideNavigation from '@/components/SideNavigation.vue'
 import NoScript from '@/components/NoScript.vue'
 import DevelopmentModeMark from '@/components/DevelopmentModeMark.vue'
+import { convertDateToSimpleFormat } from '@/utils/formatDate'
 
 type LocalData = {
   hasNavigation: boolean
@@ -81,13 +83,25 @@ export default Vue.extend({
     }
   },
   head(): MetaInfo {
-    const { htmlAttrs } = this.$nuxtI18nSeo()
+    const { htmlAttrs, meta } = this.$nuxtI18nSeo()
+    const ogLocale =
+      meta && meta.length > 0
+        ? meta[0]
+        : {
+            hid: 'og:locale',
+            name: 'og:locale',
+            content: this.$i18n.locale
+          }
     return {
       htmlAttrs,
       link: [
         {
           rel: 'canonical',
           href: `https://stopcovid19.metro.tokyo.lg.jp${this.$route.path}`
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css'
         }
       ],
       meta: [
@@ -99,9 +113,12 @@ export default Vue.extend({
         {
           hid: 'description',
           name: 'description',
-          content: this.$tc(
-            '当サイトは新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、神戸市が開設したものです。'
-          )
+          content:
+            convertDateToSimpleFormat(Data.lastUpdate) +
+            ' 更新：　' +
+            this.$tc(
+              '当サイトは新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、神戸市が開設したものです。'
+            )
         },
         {
           hid: 'og:site_name',
@@ -118,11 +135,7 @@ export default Vue.extend({
           property: 'og:url',
           content: `https://stopcovid19.metro.tokyo.lg.jp${this.$route.path}`
         },
-        {
-          hid: 'og:locale',
-          property: 'og:locale',
-          content: this.$i18n.locale
-        },
+        ogLocale,
         {
           hid: 'og:title',
           property: 'og:title',
@@ -136,9 +149,12 @@ export default Vue.extend({
         {
           hid: 'og:description',
           property: 'og:description',
-          content: this.$tc(
-            '当サイトは新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、神戸市が開設したものです。'
-          )
+          content:
+            convertDateToSimpleFormat(Data.lastUpdate) +
+            ' 更新：　' +
+            this.$tc(
+              '当サイトは新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、神戸市が開設したものです。'
+            )
         },
         {
           hid: 'og:image',

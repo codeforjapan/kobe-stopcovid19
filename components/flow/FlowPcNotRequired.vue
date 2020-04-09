@@ -1,10 +1,12 @@
 <template>
   <div :class="$style.flowContainer">
     <h3 :class="$style.sectionTitle">
-      <i18n path="新型コロナ外来 {advice} と判断された場合" tag="p">
-        <strong place="advice">
-          {{ $t('受診が不要') }}
-        </strong>
+      <i18n path="帰国者・接触者外来 {advice} と判断された場合" tag="p">
+        <template v-slot:advice>
+          <strong>
+            {{ $t('受診が不要') }}
+          </strong>
+        </template>
       </i18n>
     </h3>
     <div :class="$style.actionContainer">
@@ -14,6 +16,7 @@
             :class="$style.actionsListIcon"
             src="/flow/house-24px.svg"
             aria-hidden="true"
+            alt=" "
           />
           {{ $t('自宅で安静に過ごす') }}
         </li>
@@ -22,16 +25,24 @@
             :class="$style.actionsListIcon"
             src="/flow/apartment-24px.svg"
             aria-hidden="true"
+            alt=" "
           />
           {{ $t('一般の医療機関を受診') }}
         </li>
       </ul>
       <div :class="$style.nextAction">
         <i18n path="{getWorse}{advisory}に相談" :class="$style.content">
-          <span place="getWorse">{{ $t('症状が良くならない場合は') }}</span>
-          <strong place="advisory">{{
-            $t('新型コロナ受診相談窓口（日本語のみ）')
-          }}</strong>
+          <template v-slot:getWorse>
+            <span>{{ $t('症状が良くならない場合は') }}</span>
+          </template>
+          <template v-slot:advisory>
+            <div>
+              <strong :class="$style.strongLarger">{{
+                $t('新型コロナ専用健康相談窓口')
+              }}</strong>
+              <strong>{{ $t('（帰国者・接触者相談センター）') }}</strong>
+            </div>
+          </template>
         </i18n>
       </div>
     </div>
@@ -115,7 +126,11 @@
   }
 
   strong {
-    font-size: 1.5rem;
+    &.strongLarger {
+      font-size: 1.4rem;
+    }
+
+    display: block;
   }
 }
 </style>

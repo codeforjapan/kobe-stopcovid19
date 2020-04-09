@@ -12,14 +12,17 @@ PATHS = {
     "/cards/number-of-confirmed-cases": (959, 500),
     "/cards/attributes-of-confirmed-cases": (959, 480),
     "/cards/number-of-tested": (959, 540),
-    "/cards/number-of-reports-to-covid19-telephone-advisory-center": (959, 500),
-    "/cards/number-of-reports-to-covid19-consultation-desk": (959, 500),
-    "/cards/predicted-number-of-toei-subway-passengers": (959, 750),
-    "/cards/agency": (959, 730),
-    "/cards/details-of-tested-cases": (959, 500),
-    "/cards/number-of-inspection-persons": (959, 600),
-    "/cards/shinjuku-visitors": (959, 820),
-    "/cards/chiyoda-visitors": (959, 820)
+    # "/cards/number-of-reports-to-returnee-contact-center": (959, 500),
+    "/cards/number-of-reports-to-health-consultation-desk": (959, 500),
+    # "/cards/predicted-number-of-toei-subway-passengers": (959, 750),
+    # "/cards/agency": (959, 730),
+    # "/cards/details-of-tested-cases": (959, 500),
+    # "/cards/number-of-inspection-persons": (959, 600),
+    # "/cards/shinjuku-visitors": (959, 820),
+    # "/cards/chiyoda-visitors": (959, 820),
+    # "/cards/shinjuku-st-heatmap": (959, 600),
+    # "/cards/tokyo-st-heatmap": (959, 600)
+    "/cards/number-of-reports-to-health-center-desk": (959, 500)
 }
 
 options = webdriver.ChromeOptions()
@@ -39,6 +42,8 @@ for lang in ("ja", "en", "zh-cn", "zh-tw", "ko", "ja-basic"):
             )
         )
         path = path.replace("/cards/", "").replace("/", "_")
+        if ('heatmap' in path):
+            time.sleep(20)
         driver.save_screenshot(
             "ogp/{}.png".format(
                 path if lang == "ja" else "{}/{}".format(lang, path)

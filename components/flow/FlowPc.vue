@@ -1,57 +1,114 @@
 <template>
   <div :class="$style.FlowCard">
-    <h3>{{ $t('新型コロナウイルス感染症にかかる相談窓口について') }}</h3>
-    <div :class="[$style.Outer, $style.OuterUpper]">
-      <div :class="[$style.CardBlock, $style.Past]">
-        <flow-pc-past />
-      </div>
-      <div :class="[$style.CardBlock, $style.Days]">
-        <flow-pc-days />
-      </div>
-      <div :class="[$style.CardBlock, $style.CardBlockCenter, $style.Suspect]">
-        <flow-pc-suspect />
-      </div>
-      <div :class="$style.Advisory">
-        <flow-pc-advisory />
-      </div>
-      <div :class="$style.Advisory2">
-        <flow-pc-advisory2 />
-      </div>
-    </div>
-    <h3>
-      <i18n
-        :class="$style.TitleSmall"
-        tag="span"
-        path="{advisory}による相談結果"
-      >
-        <span :class="$style.TitleLarge" place="advisory">
-          {{ $t('新型コロナ受診相談窓口') }}
-        </span>
-      </i18n>
-    </h3>
-    <div :class="[$style.Outer, $style.OuterLower]">
-      <div
-        :class="[$style.CardBlock, $style.CardBlockRequired, $style.Required]"
-      >
-        <flow-pc-required />
-      </div>
-      <div :class="[$style.CardBlock, $style.CardBlockPcr, $style.Pcr]">
-        <flow-pc-pcr />
-      </div>
-      <div :class="$style.NotRequired">
-        <flow-pc-not-required />
-      </div>
-      <div :class="$style.Hospitalized">
-        <flow-pc-hospitalized />
+    <div :class="$style.FirstSectionWrapper">
+      <h3>{{ $t('新型コロナウイルス感染症にかかる相談窓口について') }}</h3>
+      <div :class="[$style.Outer, $style.OuterUpper]">
+        <div :class="[$style.CardBlock, $style.Past]">
+          <div :class="[$style.CardBlockInner]">
+            <flow-pc-past />
+            <img
+              :class="$style.CardBlockIcon"
+              src="/flow/flow_arrow.svg"
+              aria-hidden="true"
+              alt=" "
+            />
+          </div>
+        </div>
+        <div :class="[$style.CardBlock, $style.Days]">
+          <div :class="[$style.CardBlockInner]">
+            <flow-pc-days />
+            <img
+              :class="$style.CardBlockIcon"
+              src="/flow/flow_arrow.svg"
+              aria-hidden="true"
+              alt=" "
+            />
+          </div>
+        </div>
+        <div
+          :class="[$style.CardBlock, $style.CardBlockSuspect, $style.Suspect]"
+        >
+          <div :class="[$style.CardBlockInner]">
+            <flow-pc-suspect />
+            <img
+              :class="$style.CardBlockIcon"
+              src="/flow/flow_arrow.svg"
+              aria-hidden="true"
+              alt=" "
+            />
+          </div>
+        </div>
+        <div :class="$style.Advisory">
+          <flow-pc-advisory />
+        </div>
       </div>
     </div>
-    <p :class="$style.Note">
-      {{
-        $t(
-          '※保険適用となる検査は、当面の間、院内感染防止等の観点から、「帰国者・接触者外来」等の医療機関で実施'
-        )
-      }}
-    </p>
+    <div :class="$style.SecondSectionWrapper">
+      <h3>
+        <i18n
+          :class="$style.TitleSmall"
+          tag="span"
+          path="{advisory}による相談結果"
+        >
+          <template v-slot:advisory>
+            <span :class="$style.TitleLarge">
+              {{ $t('新型コロナ受診相談窓口') }}
+            </span>
+          </template>
+        </i18n>
+      </h3>
+      <div :class="[$style.Outer, $style.OuterLower]">
+        <div
+          :class="[$style.CardBlock, $style.CardBlockRequired, $style.Required]"
+        >
+          <div :class="[$style.CardBlockInner]">
+            <flow-pc-required />
+            <img
+              :class="$style.CardBlockIcon"
+              src="/flow/flow_arrow.svg"
+              aria-hidden="true"
+              alt=" "
+            />
+            <img
+              :class="$style.CardBlockIcon"
+              src="/flow/flow_arrow.svg"
+              aria-hidden="true"
+              alt=" "
+            />
+          </div>
+        </div>
+        <div :class="[$style.CardBlock, $style.CardBlockPcr, $style.Pcr]">
+          <div :class="[$style.CardBlockInner]">
+            <flow-pc-pcr />
+            <img
+              :class="$style.CardBlockIcon"
+              src="/flow/flow_arrow.svg"
+              aria-hidden="true"
+              alt=" "
+            />
+            <img
+              :class="$style.CardBlockIcon"
+              src="/flow/flow_arrow.svg"
+              aria-hidden="true"
+              alt=" "
+            />
+          </div>
+        </div>
+        <div :class="$style.NotRequired">
+          <flow-pc-not-required />
+        </div>
+        <div :class="$style.Hospitalized">
+          <flow-pc-hospitalized />
+        </div>
+      </div>
+      <p :class="$style.Note">
+        {{
+          $t(
+            '※保険適用となる検査は、当面の間、院内感染防止等の観点から、「帰国者・接触者外来」等の医療機関で実施'
+          )
+        }}
+      </p>
+    </div>
   </div>
 </template>
 
@@ -60,7 +117,6 @@ import FlowPcPast from './FlowPcPast.vue'
 import FlowPcDays from './FlowPcDays.vue'
 import FlowPcSuspect from './FlowPcSuspect.vue'
 import FlowPcAdvisory from './FlowPcAdvisory.vue'
-import FlowPcAdvisory2 from './FlowPcAdvisory2.vue'
 import FlowPcRequired from './FlowPcRequired.vue'
 import FlowPcPcr from './FlowPcPcr.vue'
 import FlowPcNotRequired from './FlowPcNotRequired.vue'
@@ -72,7 +128,6 @@ export default {
     FlowPcDays,
     FlowPcSuspect,
     FlowPcAdvisory,
-    FlowPcAdvisory2,
     FlowPcRequired,
     FlowPcPcr,
     FlowPcNotRequired,
@@ -82,21 +137,40 @@ export default {
 </script>
 
 <style module lang="scss">
-.FlowCard {
-  display: flex;
-  flex-direction: column;
-
-  @include card-container();
-
-  padding: 20px;
-  margin-bottom: 20px;
-  word-break: break-word;
-  hyphens: auto;
-
+.FirstSectionWrapper {
+  page-break-before: avoid;
+  page-break-inside: avoid;
   > h3 {
     color: $gray-2;
     font-size: 1.5rem;
     margin-bottom: 7px;
+    @media print {
+      display: none;
+    }
+  }
+}
+
+.SecondSectionWrapper {
+  page-break-inside: avoid;
+  > h3 {
+    color: $green-2;
+    font-size: 1.5rem;
+    margin-bottom: 7px;
+  }
+}
+
+.FlowCard {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  word-break: break-word;
+  hyphens: auto;
+  @media print {
+    padding: 10px 20px 0 20px;
+    margin-bottom: 0;
   }
 
   &GrayBg {
@@ -105,10 +179,12 @@ export default {
 }
 
 .Outer {
+  $grid-gap: 12px;
+
   display: grid;
-  grid-gap: 12px;
 
   &Upper {
+    grid-gap: $grid-gap;
     grid-template-columns: 70% 30%;
     -ms-grid-columns: 70% 12px 30%;
     grid-template-rows: repeat(3, auto);
@@ -145,6 +221,7 @@ export default {
   }
 
   &Lower {
+    grid-gap: $grid-gap;
     grid-template-columns: repeat(2, calc(50% - 6px));
     -ms-grid-columns: calc(50% - 6px) 12px calc(50% - 6px);
     grid-template-rows: repeat(3, auto);
@@ -190,57 +267,55 @@ export default {
 }
 
 .CardBlock {
-  position: relative;
+  &Inner {
+    position: relative;
+  }
 
-  &::after {
-    content: url('/flow/flow_arrow.svg');
+  &Icon {
     position: absolute;
-    bottom: 40%;
+    bottom: 10%;
     right: -30px;
     z-index: 1;
-    display: block;
-    width: 46px;
-    height: 46px;
   }
 
-  &Center::after {
-    bottom: 40%;
+  &Suspect {
+    .CardBlockIcon {
+      bottom: 40%;
+    }
   }
 
-  &Required::after {
-    bottom: -30px;
-    right: auto;
-    left: 22%;
-    transform: rotate(90deg);
+  &Required {
+    .CardBlockIcon:nth-of-type(1) {
+      top: auto;
+      bottom: -30px;
+      right: auto;
+      left: 22%;
+      margin-top: 0;
+      transform: rotate(90deg);
+    }
+    .CardBlockIcon:nth-of-type(2) {
+      top: auto;
+      bottom: 12%;
+      right: -30px;
+      margin-top: 0;
+    }
   }
 
-  &Required::before {
-    content: url('/flow/flow_arrow.svg');
-    position: absolute;
-    bottom: 12%;
-    right: -30px;
-    z-index: 1;
-    display: block;
-    width: 46px;
-    height: 46px;
-  }
-
-  &Pcr::after {
-    bottom: auto;
-    top: 15%;
-    transform: rotateZ(-30deg);
-  }
-
-  &Pcr::before {
-    content: url('/flow/flow_arrow.svg');
-    position: absolute;
-    bottom: 15%;
-    right: -30px;
-    z-index: 1;
-    display: block;
-    width: 46px;
-    height: 46px;
-    transform: rotateZ(30deg);
+  &Pcr {
+    .CardBlockIcon:nth-of-type(1) {
+      top: 15%;
+      bottom: auto;
+      right: -30px;
+      margin-top: auto;
+      transform: rotateZ(-30deg);
+    }
+    .CardBlockIcon:nth-of-type(2) {
+      top: auto;
+      bottom: 15%;
+      right: -30px;
+      margin-top: auto;
+      transform: rotateZ(30deg);
+    }
   }
 }
 
@@ -261,24 +336,8 @@ export default {
 
 .Advisory {
   grid-column: 2 / 3;
-  grid-row: 1 / 3;
+  grid-row: 1 / 4;
   position: relative;
-
-  &::after {
-    content: url('/flow/flow_arrow.svg');
-    position: absolute;
-    left: calc(50% - 23px);
-    transform: rotate(-90deg);
-    z-index: 1;
-    display: block;
-    width: 46px;
-    height: 46px;
-  }
-}
-
-.Advisory2 {
-  grid-column: 2 / 3;
-  grid-row: 3 / 4;
 }
 
 .Required {
@@ -303,5 +362,8 @@ export default {
 
 .Note {
   margin: 16px 0;
+  @media print {
+    margin: 5px;
+  }
 }
 </style>

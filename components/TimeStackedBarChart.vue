@@ -1,8 +1,8 @@
 <template>
-  <data-view :title="title" :title-id="titleId" :date="date">
+  <data-view :title="title" :title-id="titleId" :date="date" :url="url">
     <template v-slot:button>
-      <ul :class="$style.GraphDesc">
-        <li>
+      <ul v-if="desc" :class="$style.GraphDesc">
+        <!--<li>
           {{ $t('（注）医療機関が保険適用で行った検査は含まれていない') }}
         </li>
         <li>
@@ -14,7 +14,10 @@
               '（注）速報値として公開するものであり、後日確定データとして修正される場合あり'
             )
           }}
-        </li>
+        </li>-->
+        {{
+          desc
+        }}
       </ul>
       <data-selector
         v-model="dataKind"
@@ -22,7 +25,11 @@
         :style="{ display: canvas ? 'inline-block' : 'none' }"
       />
     </template>
+    <h4 :id="`${titleId}-graph`" class="visually-hidden">
+      {{ $t(`{title}のグラフ`, { title }) }}
+    </h4>
     <bar
+      :ref="'barChart'"
       :style="{ display: canvas ? 'block' : 'none' }"
       :chart-id="chartId"
       :chart-data="displayData"
@@ -62,7 +69,7 @@ import { TranslateResult } from 'vue-i18n'
 import DataView from '@/components/DataView.vue'
 import DataSelector from '@/components/DataSelector.vue'
 import DataViewBasicInfoPanel from '@/components/DataViewBasicInfoPanel.vue'
-import { double as colors } from '@/utils/colors'
+import { doubleReverse as colors } from '@/utils/colors'
 
 interface HTMLElementEvent<T extends HTMLElement> extends Event {
   currentTarget: T
@@ -131,6 +138,8 @@ type Props = {
   labels: string[]
   dataLabels: string[] | TranslateResult[]
   unit: string
+  url: string
+  desc: string
 }
 
 const options: ThisTypedComponentOptionsWithRecordProps<
@@ -182,6 +191,16 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     unit: {
       type: String,
+      default: ''
+    },
+    url: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    desc: {
+      type: String,
+      required: false,
       default: ''
     }
   },
@@ -322,11 +341,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 maxTicksLimit: 20,
                 fontColor: '#808080',
                 maxRotation: 0,
-                minRotation: 0,
                 callback: (label: string) => {
                   return label.split('/')[1]
                 }
               }
+              // #2384: If you set "type" to "time", make sure that the bars at both ends are not hidden.
+              // #2384: typeをtimeに設定する時はグラフの両端が見切れないか確認してください
             },
             {
               id: 'month',
@@ -341,39 +361,15 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 fontSize: 11,
                 fontColor: '#808080',
                 padding: 3,
-                fontStyle: 'bold',
-                callback: (label: string) => {
-                  const monthStringArry = [
-                    'Jan',
-                    'Feb',
-                    'Mar',
-                    'Apr',
-                    'May',
-                    'Jun',
-                    'Jul',
-                    'Aug',
-                    'Sep',
-                    'Oct',
-                    'Nov',
-                    'Dec'
-                  ]
-                  const mm = monthStringArry.indexOf(label.split(' ')[0]) + 1
-                  const year = new Date().getFullYear()
-                  const mdate = new Date(year + '-' + mm + '-1')
-                  let localString
-                  if (this.$root.$i18n.locale === 'ja-basic') {
-                    localString = 'ja'
-                  } else {
-                    localString = this.$root.$i18n.locale
-                  }
-                  return mdate.toLocaleString(localString, {
-                    month: 'short'
-                  })
-                }
+                fontStyle: 'bold'
               },
               type: 'time',
               time: {
-                unit: 'month'
+                unit: 'month',
+                parser: 'M/D',
+                displayFormats: {
+                  month: 'MMM'
+                }
               }
             }
           ],
@@ -433,6 +429,17 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         sumArray.push(chartDataArray[0][i] + chartDataArray[1][i])
       }
       return sumArray
+    }
+  },
+  mounted() {
+    const barChart = this.$refs.barChart as Vue
+    const barElement = barChart.$el
+    const canvas = barElement.querySelector('canvas')
+    const labelledbyId = `${this.titleId}-graph`
+
+    if (canvas) {
+      canvas.setAttribute('role', 'img')
+      canvas.setAttribute('aria-labelledby', labelledbyId)
     }
   }
 }
