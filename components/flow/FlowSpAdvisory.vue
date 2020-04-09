@@ -1,19 +1,19 @@
 <template>
   <div :class="$style.container">
     <h4 id="consult" :class="[$style.heading, $style.fzXLarge]">
-      {{ $t('新型コロナ受診相談窓口（日本語のみ）') }}
+      {{ $t('新型コロナ専用健康相談窓口') }}
       <small :class="[$style.break, $style.fzRegular, $style.mt5]">{{
-        $t('帰国者・接触者 電話相談センター')
+        $t('（帰国者・接触者相談センター）')
       }}</small>
     </h4>
     <p :class="[$style.open, $style.fzMedium]">
-      <span>{{ $t('24時間対応') }}</span>
+      <span>{{ $t('24時間対応（土日祝含む）') }}</span>
     </p>
     <div :class="[$style.phone, $style.fzNumeric]">
       <span :class="$style.icon">
         <PhoneIcon alt="Phone" />
       </span>
-      <a href="tel:0783226829">078-322-6829</a>
+      <a href="tel:0783226250">078-322-6250</a>
     </div>
   </div>
 </template>

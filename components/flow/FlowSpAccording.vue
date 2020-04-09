@@ -147,9 +147,14 @@
               <span>{{ $t('症状が良くならない場合は') }}</span>
             </template>
             <template v-slot:advisory>
-              <strong :class="$style.advisory">
-                {{ $t('帰国者・接触者 相談センター') }}
-              </strong>
+              <div>
+                <strong :class="$style.advisoryLarger">{{
+                  $t('新型コロナ専用健康相談窓口')
+                }}</strong>
+                <strong :class="$style.advisory">{{
+                  $t('（帰国者・接触者相談センター）')
+                }}</strong>
+              </div>
             </template>
           </i18n>
         </p>
@@ -264,7 +269,11 @@ export default {
     }
 
     .advisory {
-      font-size: px2vw(38);
+      font-size: px2vw(28);
+      &Larger {
+        font-size: px2vw(38);
+      }
+
       display: block;
       margin-top: px2vw(10);
       margin-bottom: px2vw(10);
@@ -354,7 +363,11 @@ export default {
       }
 
       .advisory {
-        font-size: px2vw(38, $vw);
+        font-size: px2vw(28, $vw);
+        &Larger {
+          font-size: px2vw(38, $vw);
+        }
+
         margin-top: px2vw(10, $vw);
         margin-bottom: px2vw(10, $vw);
       }
