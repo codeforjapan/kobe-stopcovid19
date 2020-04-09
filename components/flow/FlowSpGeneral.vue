@@ -61,9 +61,7 @@
       href="#consult"
       :class="[$style.button, $style.clickable]"
     >
-      <span :class="$style.text">{{
-        $t('帰国者・接触者 相談センターへ')
-      }}</span>
+      <span :class="$style.text">{{ $t('新型コロナ専用健康相談窓口へ') }}</span>
       <ArrowForwardIcon :class="$style.icon" />
     </a>
   </div>

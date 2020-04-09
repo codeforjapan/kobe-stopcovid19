@@ -2,13 +2,18 @@
   <div :class="$style.Advisory">
     <div :class="$style.AdvisoryContainer">
       <div :class="$style.AdvisoryContents">
-        <div :class="[$style.AdvisoryContentsTitle, 'mt-4']">
-          {{ $t('帰国者・接触者 相談センター') }}
+        <div>
+          <span :class="$style.AdvisoryContentsTitle">{{
+            $t('新型コロナ専用健康相談窓口')
+          }}</span>
+        </div>
+        <div :class="[$style.AdvisoryContentsColsSentense, 'mt-4']">
+          {{ $t('（帰国者・接触者相談センター）') }}
         </div>
         <div>
           <div :class="[$style.AdvisoryBoxContainer, $style.AdvisoryWhiteBox]">
             <span :class="$style.AdvisoryWhiteBoxSentense">
-              {{ $t('24時間対応') }}
+              {{ $t('24時間対応（土日祝含む）') }}
             </span>
           </div>
         </div>
@@ -19,14 +24,14 @@
             'mt-1'
           ]"
         >
-          <a :class="$style.AdvisoryTelephone" href="tel:0783226829">
+          <a :class="$style.AdvisoryTelephone" href="tel:0783226250">
             <img
               :class="$style.AdvisoryTelephoneIcon"
               src="/flow/phone-24px.svg"
               aria-hidden="true"
               :alt="$t('電話番号')"
             />
-            078-322-6829
+            078-322-6250
           </a>
         </div>
       </div>
@@ -47,7 +52,7 @@
     border: 3px solid #4d4d4d;
     border-radius: 4px;
     height: 100%;
-    padding: 30px 12px 20px 12px;
+    padding: 30px 20px 20px 20px;
     margin-bottom: 10px;
     text-align: center;
   }
@@ -60,7 +65,7 @@
     }
 
     &Title {
-      font-size: 21px;
+      font-size: 26px;
       line-height: 28px;
     }
 
@@ -70,6 +75,10 @@
 
     &SubTitle {
       font-size: 18px;
+    }
+
+    &ColsSentense {
+      line-height: 18px;
     }
   }
 
@@ -132,7 +141,7 @@
 
   &WhiteBox {
     background-color: $white;
-    max-width: 160px;
+    max-width: 240px;
     padding: 10px;
 
     &Sentense {

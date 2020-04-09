@@ -1,12 +1,6 @@
 <template>
   <div :class="$style.FlowComponent">
     <div :class="[$style.SubtleBox, $style.Box1]">
-      <img
-        :class="$style.Box1Icon"
-        src="/flow/flow_arrow.svg"
-        aria-hidden="true"
-        alt=" "
-      />
       <div :class="$style.RowItems">
         <div :class="$style.RowItemsHeader">
           <img
@@ -46,27 +40,6 @@
           />
           {{ $t('感染の不安') }}
         </div>
-      </div>
-    </div>
-
-    <div :class="[$style.SubtleBox, $style.Box2, $style.Center]">
-      <div :class="$style.LargerText">
-        {{ $t('新型コロナ専用健康相談窓口') }}
-      </div>
-      <div :class="$style.SmallerText">
-        {{ $t('24時間対応（土日祝含む）') }}
-      </div>
-
-      <div :class="$style.Tel">
-        <a :class="$style.TelLink" href="tel:0783226250">
-          <img
-            :class="$style.TelLinkIcon"
-            src="/flow/phone-24px.svg"
-            aria-hidden="true"
-            :alt="$t('電話番号')"
-          />
-          078-322-6250
-        </a>
       </div>
     </div>
   </div>
@@ -158,30 +131,8 @@
   position: relative;
   flex-grow: 0;
   flex-shrink: 0;
-  width: 60%;
+  width: 100%;
   flex-direction: row;
-
-  &Icon {
-    position: absolute;
-    bottom: 40%;
-    right: -30px;
-    z-index: 1;
-    display: block;
-    width: 46px;
-    height: 46px;
-  }
-}
-
-.Box2 {
-  flex-grow: 0;
-  flex-shrink: 0;
-  width: 38%;
-  flex-direction: column;
-  justify-content: center;
-
-  div {
-    margin: 0.5em;
-  }
 }
 
 .RowItems {
