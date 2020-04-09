@@ -23,7 +23,7 @@ const config: Configuration = {
       {
         hid: 'og:url',
         property: 'og:url',
-        content: 'https://stopcovid19.metro.tokyo.lg.jp'
+        content: 'https://kobe.stopcovid19.jp/'
       },
       {
         hid: 'twitter:card',
@@ -33,12 +33,12 @@ const config: Configuration = {
       {
         hid: 'twitter:site',
         name: 'twitter:site',
-        content: '@tokyo_bousai'
+        content: '@kobekoho'
       },
       {
         hid: 'twitter:creator',
         name: 'twitter:creator',
-        content: '@tokyo_bousai'
+        content: '@kobekoho'
       },
       {
         hid: 'fb:app_id',
