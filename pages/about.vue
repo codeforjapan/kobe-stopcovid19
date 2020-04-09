@@ -18,7 +18,7 @@
       <br />
       {{
         $t(
-          '当サイトは東京都のコロナウイルス特設サイトのソースコード(https://github.com/tokyo-metropolitan-gov/covid19)を元に開発しています。'
+          '当サイトは東京都の新型コロナウイルス特設サイトのソースコード(https://github.com/tokyo-metropolitan-gov/covid19)を元に開発しています。'
         )
       }}
     </StaticCard>
