@@ -1806,7 +1806,7 @@
         "value": 90,
         "children": [
             {
-                "attr": "陽性患者数",
+                "attr": "調査済患者総数",
                 "value": 76,
                 "children": [
                     {
