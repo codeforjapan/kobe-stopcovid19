@@ -4,6 +4,7 @@ import codecs
 import shutil
 import time
 import os
+import copy
 
 from bs4 import BeautifulSoup
 from json import dumps
@@ -14,7 +15,7 @@ from typing import Dict
 jst = timezone(timedelta(hours=9), 'JST')
 base_url = "https://www.city.kobe.lg.jp/"
 
-SUMMARY_INIT = {
+OLD_SUMMARY_INIT = {
     'attr': '検査実施人数',
     'value': 0,
     'children': [
@@ -48,6 +49,10 @@ SUMMARY_INIT = {
         }
     ]
 }
+
+
+SUMMARY_INIT = copy.copy(OLD_SUMMARY_INIT)
+SUMMARY_INIT["attr"] = "患者発生総数"
 
 
 def print_log(type: str, message: str) -> None:

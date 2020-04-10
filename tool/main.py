@@ -1,10 +1,11 @@
-from util import SUMMARY_INIT, dumps_json, requests_html, get_xlsx, make_data, template_json, jst
+from util import OLD_SUMMARY_INIT, SUMMARY_INIT, dumps_json, requests_html, get_xlsx, make_data, template_json, jst
 import config
 
 from datetime import datetime, timedelta
-from typing import Dict  # , List
+from typing import Dict, List
 
 summary_first_cell = 2
+all_summary_first_cell = 2
 contacts_first_cell = 2
 
 
@@ -14,10 +15,19 @@ class DataJson:
         self.patients_html = requests_html("a57337/kenko/health/corona_zokusei.html")
         # self.inspections_sheet = get_xlsx(config.inspections_xlsx, "inspections.xlsx")["検査件数・陽性患者"]
         self.main_summary_html = requests_html("/a73576/kenko/health/infection/protection/covid_19.html")
-        self.main_summary_sheet = get_xlsx(config.main_page)["kobe"]
+        self.summary_xlsx = get_xlsx(config.main_page)
+        self.main_summary_sheet = self.summary_xlsx["kobe"]
+        # 神戸市のサイト形式変更に伴い、self.summary_xlsxに"all"シートが追加され、これが使えるようになるので、
+        # allが取得できるようになり次第、自動で切り替えるようにする
+        self.all_summary_sheet = None
+        try:
+            self.all_summary_sheet = self.summary_xlsx["all"]
+        except Exception:
+            pass
         # self.inspections_count = 4
         self.contacts_count = contacts_first_cell
         self.summary_count = summary_first_cell
+        self.all_summary_count = all_summary_first_cell
         self.main_summary_values = []
         self.last_update = datetime.today().astimezone(jst).strftime("%Y/%m/%d %H:%M")
         self._data_json = {}
@@ -32,6 +42,7 @@ class DataJson:
         # self.get_inspections()
         self.get_contacts()
         self.get_summary_count()
+        self.get_all_summary_count()
 
     def data_json(self) -> Dict:
         # 内部変数にデータが保管されているか否かを確認し、保管されていなければ生成し、返す。
@@ -191,35 +202,39 @@ class DataJson:
             self._inspections_summary_json["data"].append(make_data(date.isoformat() + "Z", inspections))
 
     def make_main_summary(self) -> None:
-        # main_summaryの生成
-        self._main_summary_json = SUMMARY_INIT
-
-        # main_summaryはHTMLの表を使用して作成しているので、テーブル(レコード一覧)を取得する
-        tables = self.main_summary_html.find_all("tr")
-        # レコード(セル一覧)を取得する
-        for i, cells in enumerate(tables):
-            # https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html の
-            # 検査件数総数(i == 3, j == 0の場所)のデータと神戸市内在住者合計(i == 5, j == 0以降)のデータを使うので、
-            # それ以外の行は読み飛ばす
-            if i not in [3, 5]:
-                continue
-            for j, cell in enumerate(cells.find_all("td")):
-                # 検査件数総数以外は使わないのでbreakさせる
-                if i == 3 and j > 0:
-                    break
-                # 一番最初に「神戸市内在住者合計」とあって、データではないので読み飛ばす
-                if i == 5 and j == 0:
+        # 神戸市のサイト形式変更に伴い、self.summary_xlsxに"all"シートが追加され、これが使えるようになるので、
+        # allが取得できるようになり次第、自動で切り替えるようにする
+        if self.all_summary_sheet:
+            # main_summaryの生成
+            self._main_summary_json = SUMMARY_INIT
+            self.main_summary_values = self.get_main_summary_values()
+        else:
+            # main_summaryの生成
+            self._main_summary_json = OLD_SUMMARY_INIT
+            # main_summaryはHTMLの表を使用して作成しているので、テーブル(レコード一覧)を取得する
+            tables = self.main_summary_html.find_all("tr")
+            # レコード(セル一覧)を取得する
+            for i, cells in enumerate(tables):
+                # https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html の
+                # 検査件数総数(i == 3, j == 0の場所)のデータと神戸市内在住者合計(i == 5, j == 0以降)のデータを使うので、
+                # それ以外の行は読み飛ばす
+                if i not in [3, 5]:
                     continue
-                # テキストをリストとして取得
-                text_list = cell.get_text().split()
-                # text_list[0]が数字のみの場合(「10」など)はtryでそのまま成功するが、「10人」などの場合はexpectで処理させる。
-                try:
-                    value = int(text_list[0])
-                except Exception:
-                    value = int(text_list[0][:-1])
-                self.main_summary_values.append(value)
-        # 県のExcelデータを用いるために使用していたが、市外在住者の扱いを統一するためHPをスクレイピングしたものを使うことになったのでコメントアウト
-        # self.main_summary_values = self.get_main_summary_values()
+                for j, cell in enumerate(cells.find_all("td")):
+                    # 検査件数総数以外は使わないのでbreakさせる
+                    if i == 3 and j > 0:
+                        break
+                    # 一番最初に「神戸市内在住者合計」とあって、データではないので読み飛ばす
+                    if i == 5 and j == 0:
+                        continue
+                    # テキストをリストとして取得
+                    text_list = cell.get_text().split()
+                    # text_list[0]が数字のみの場合(「10」など)はtryでそのまま成功するが、「10人」などの場合はexpectで処理させる。
+                    try:
+                        value = int(text_list[0])
+                    except Exception:
+                        value = int(text_list[0][:-1])
+                    self.main_summary_values.append(value)
         self.set_summary_values(self._main_summary_json)
 
     def set_summary_values(self, obj) -> None:
@@ -232,12 +247,11 @@ class DataJson:
                 self.main_summary_values = self.main_summary_values[1:]
                 self.set_summary_values(child)
 
-    # 市のExcelデータを用いるために使用していたが、市外在住者の扱いを統一するためHPをスクレイピングしたものを使うことになったのでコメントアウト
-    # def get_main_summary_values(self) -> List:
-    #     values = []
-    #     for i in range(2, 9):
-    #         values.append(self.main_summary_sheet.cell(row=self.summary_count - 1, column=i).value)
-    #      return values
+    def get_main_summary_values(self) -> List:
+        values = []
+        for i in range(2, 9):
+            values.append(self.all_summary_sheet.cell(row=self.all_summary_count - 1, column=i).value)
+        return values
 
     # 検査件数、陽性患者数はmain_summary_sheetから取ることになったのでコメントアウト
     # def get_inspections(self) -> None:
@@ -264,6 +278,13 @@ class DataJson:
             if not value:
                 break
 
+    def get_all_summary_count(self) -> None:
+        # 何行分サマリーのデータがあるかを取得
+        while self.all_summary_sheet:
+            self.summary_count += 1
+            value = self.all_summary_sheet.cell(row=self.all_summary_count, column=1).value
+            if not value:
+                break
 
 if __name__ == '__main__':
     dumps_json("data.json", DataJson().data_json())

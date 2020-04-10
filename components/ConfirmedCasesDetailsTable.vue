@@ -4,11 +4,11 @@
       <div :class="$style.pillar_tested">
         <div :class="$style.content">
           <span>
-            {{ $t('検査実施人数') }}
-            <br />({{ $t('累計') }})
+            {{ $t('患者発生総数') }}
+            <br />({{ $t('速報含む') }})
           </span>
           <span>
-            <strong>{{ 検査実施人数 }}</strong>
+            <strong>{{ 患者発生総数.toLocaleString() }}</strong>
             <span :class="$style.unit">{{ $t('人') }}</span>
           </span>
         </div>
@@ -112,7 +112,7 @@ import Vue from 'vue'
 /* eslint-disable vue/prop-name-casing */
 export default Vue.extend({
   props: {
-    検査実施人数: {
+    患者発生総数: {
       type: Number,
       required: true
     },
