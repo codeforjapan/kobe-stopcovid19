@@ -1,14 +1,19 @@
 {
     "newsItems": [
         {
-            "date": "2020\/03\/24",
-            "url": "https:\/\/www.city.kobe.lg.jp\/a36812\/press\/202478667155.html",
-            "text": "神戸市内認定こども園の保育再開について"
+            "date": "2020/04/08",
+            "url": "https://www.city.kobe.lg.jp/a57337/kenko/health/corona_taiouhoshin6dan.html",
+            "text": "新型コロナウイルス感染症における神戸市の対応方針第6弾"
         },
         {
-            "date": "2020\/03\/17",
-            "url": "https://www.city.kobe.lg.jp/a57337/kenko/health/corona_kaigojigyoshosaikai.html",
-            "text": "神戸市内介護保険通所事業所の再開について"
+            "date": "2020/04/09",
+            "url": "https://www.city.kobe.lg.jp/a84453/20200406ann1.html",
+            "text": "区役所への来庁を控えて外出の自粛にご協力ください（郵送手続・電子申請などのご案内）"
+        },
+        {
+            "date": "2020/04/08",
+            "url": "https://www.city.kobe.lg.jp/a57337/kenko/coc.html",
+            "text": "5月6日（水曜・祝日）まで、学校園を臨時休業します"
         }
     ]
 }
