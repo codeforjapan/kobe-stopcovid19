@@ -158,9 +158,13 @@ class DataJson:
                     break
                 # 日付を取得する
                 elif i == 1:
-                    date = datetime.strptime("2020年" + text, "%Y年%m月%d日") + timedelta(hours=8)
-                    data["判明日"] = date.isoformat() + "Z"
-                    data["date"] = date.strftime("%Y-%m-%d")
+                    try:
+                        date = datetime.strptime("2020年" + text, "%Y年%m月%d日") + timedelta(hours=8)
+                        data["判明日"] = date.isoformat() + "Z"
+                        data["date"] = date.strftime("%Y-%m-%d")
+                    except Exception:
+                        data["判明日"] = None
+                        data["date"] = None
                 # 年代を取得する
                 elif i == 2:
                     data["年代"] = text + "代"

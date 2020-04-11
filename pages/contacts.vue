@@ -112,7 +112,7 @@
               >
                 <template v-slot:pdf>
                   <a
-                    href="https://www.city.kobe.lg.jp/documents/31680/20200318ryuukouchiiki.pdf"
+                    href="https://www.city.kobe.lg.jp/documents/31680/20200327ryuukouchiiki.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
