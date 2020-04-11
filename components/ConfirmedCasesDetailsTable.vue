@@ -18,11 +18,10 @@
       <div :class="$style.pillar">
         <div :class="$style.content">
           <span>
-            {{ $t('陽性者数') }}
-            <br />({{ $t('累計') }})
+            {{ $t('調査済患者総数') }}
           </span>
           <span>
-            <strong>{{ 陽性者数.toLocaleString() }}</strong>
+            <strong>{{ 調査済患者総数.toLocaleString() }}</strong>
             <span :class="$style.unit">{{ $t('人') }}</span>
           </span>
         </div>
@@ -116,7 +115,7 @@ export default Vue.extend({
       type: Number,
       required: true
     },
-    陽性者数: {
+    調査済患者総数: {
       type: Number,
       required: true
     },

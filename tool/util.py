@@ -53,6 +53,7 @@ OLD_SUMMARY_INIT = {
 
 SUMMARY_INIT = copy.copy(OLD_SUMMARY_INIT)
 SUMMARY_INIT["attr"] = "患者発生総数"
+SUMMARY_INIT["children"][0]["attr"] = "調査済患者総数"
 
 
 def print_log(type: str, message: str) -> None:
@@ -107,7 +108,7 @@ def get_xlsx(path: str, number: int = 0) -> openpyxl.workbook.workbook.Workbook:
             continue
         if tag.get("href")[-4:] == "xlsx":
             if count == number:
-                file_url = base_url + tag.get("href")
+                file_url = base_url + tag.get("href")[1:]
                 break
             count += 1
 
