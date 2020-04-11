@@ -12,7 +12,7 @@ contacts_first_cell = 2
 class DataJson:
     def __init__(self):
         self.contacts_sheet = get_xlsx(config.main_page, 1)["相談件数"]
-        self.patients_html = requests_html("a57337/kenko/health/corona_zokusei.html")
+        self.patients_html = requests_html("/a57337/kenko/health/corona_zokusei.html")
         # self.inspections_sheet = get_xlsx(config.inspections_xlsx, "inspections.xlsx")["検査件数・陽性患者"]
         self.main_summary_html = requests_html("/a73576/kenko/health/infection/protection/covid_19.html")
         self.summary_xlsx = get_xlsx(config.main_page)
@@ -281,10 +281,11 @@ class DataJson:
     def get_all_summary_count(self) -> None:
         # 何行分サマリーのデータがあるかを取得
         while self.all_summary_sheet:
-            self.summary_count += 1
+            self.all_summary_count += 1
             value = self.all_summary_sheet.cell(row=self.all_summary_count, column=1).value
             if not value:
                 break
+
 
 if __name__ == '__main__':
     dumps_json("data.json", DataJson().data_json())

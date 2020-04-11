@@ -107,7 +107,7 @@ def get_xlsx(path: str, number: int = 0) -> openpyxl.workbook.workbook.Workbook:
             continue
         if tag.get("href")[-4:] == "xlsx":
             if count == number:
-                file_url = base_url + tag.get("href")
+                file_url = base_url + tag.get("href")[1:]
                 break
             count += 1
 
