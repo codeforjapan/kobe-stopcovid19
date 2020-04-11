@@ -1800,10 +1800,10 @@
             }
         ]
     },
-    "lastUpdate": "2020/04/10 23:04",
+    "lastUpdate": "2020/04/11 12:03",
     "main_summary": {
-        "attr": "検査実施人数",
-        "value": 90,
+        "attr": "患者発生総数",
+        "value": 103,
         "children": [
             {
                 "attr": "調査済患者総数",
