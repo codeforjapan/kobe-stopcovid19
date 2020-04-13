@@ -183,7 +183,7 @@ class DataJson:
                 data["退院"] = None  # TODO: 退院データが現状ないため保留
                 self._patients_json["data"].append(data)
         # 市外発表者も含むため、日時順でソート
-        self._patients_json["data"].sort(key=lambda x: x['date'])
+        self._patients_json["data"].sort(key=lambda x: (x["date"] is None, x["date"]))
 
     def make_summaries(self) -> None:
         # 最終データの日の次の日を最終更新日とする
