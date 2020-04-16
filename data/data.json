@@ -2432,10 +2432,10 @@
             }
         ]
     },
-    "lastUpdate": "2020/04/16 20:04",
+    "lastUpdate": "2020/04/16 21:05",
     "main_summary": {
         "attr": "患者発生総数",
-        "value": 166,
+        "value": 157,
         "children": [
             {
                 "attr": "調査済患者総数",
