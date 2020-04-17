@@ -30,7 +30,7 @@
         <li :class="[$style.box, $style.parent, $style.hospitalized]">
           <div :class="$style.pillar">
             <div :class="$style.content">
-              <span>{{ $t('入院中') }}</span>
+              <span>{{ $t('入院中等') }}</span>
               <span>
                 <strong>{{ 入院中.toLocaleString() }}</strong>
                 <span :class="$style.unit">{{ $t('人') }}</span>

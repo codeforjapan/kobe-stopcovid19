@@ -174,7 +174,7 @@ class DataJson:
                 # 備考を取得する
                 elif i == 5:
                     # 市外在住を除外するため、備考欄を利用
-                    if text == "市外在住":
+                    if "市外在住" in text:
                         # 下のif文で引っかからないようデータを初期化
                         data = {}
                         break
