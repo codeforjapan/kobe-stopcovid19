@@ -17,6 +17,13 @@
               )
             }}
           </li>
+          <li>
+            {{
+              $t(
+                '注）「入院中等」は、入院調整中・宿泊療養に移行した人を含みます。'
+              )
+            }}
+          </li>
         </ul>
       </template>
       <confirmed-cases-details-table
