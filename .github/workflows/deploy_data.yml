@@ -50,4 +50,5 @@ jobs:
           base: master
           commit-message: BOT; UPDATE DATA
           title: BOT; UPDATE DATA to master
+          labels: auto_merge
           branch: update-data/master
