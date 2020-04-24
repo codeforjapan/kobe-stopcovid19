@@ -171,7 +171,7 @@ export default Vue.extend({
         {
           icon: 'ParentIcon',
           title: this.$t('お子様をお持ちの皆さまへ'),
-          link: 'https://www.city.kobe.lg.jp/a57337/kenko/coc.html'
+          link: 'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/corona_kosodate.html'
         },
         {
           icon: 'mdi-account-multiple',
