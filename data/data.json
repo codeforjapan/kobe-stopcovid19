@@ -1696,14 +1696,14 @@
             }
         ]
     },
-    "lastUpdate": "2020/04/26 00:03",
+    "lastUpdate": "2020/04/26 01:04",
     "main_summary": {
         "attr": "患者発生総数",
         "value": 247,
         "children": [
             {
                 "attr": "調査済患者総数",
-                "value": "=SUM(D18,G18:H18)",
+                "value": 220,
                 "children": [
                     {
                         "attr": "入院中",
