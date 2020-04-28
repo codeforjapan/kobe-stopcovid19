@@ -93,6 +93,86 @@
       </p>
     </StaticCard>
     <StaticCard>
+      <h3>{{ $t('Google アナリティクスの利用について') }}</h3>
+      <p>
+        {{
+          $t(
+            '当サイトでは、サービス向上やサイトの改善のためにGoogle LLCの提供するアクセス分析のツールであるGoogle アナリティクスを利用した計測を行っております。'
+          )
+        }}
+      </p>
+      <p>
+        {{
+          $t(
+            'Google アナリティクスでは、当サイトが発行するクッキー（Cookie）等を利用して、Webサイトの利用データ（アクセス状況、トラフィック、閲覧環境、匿名化されたIPアドレスなど）を収集しております。クッキーの利用に関してはGoogleのプライバシーポリシーと規約に基づいております。'
+          )
+        }}
+      </p>
+      <p>
+        {{
+          $t(
+            '取得したデータはWebサイト利用状況を分析しサービスの改善につなげるため、またはサイト運営者へのレポートを作成するため、その他のサービスの提供に関わる目的に限り、これを使用します。サイト運営者へのレポートでは、クッキーはブラウザ単位で本サイトのユーザー数をカウントするために、匿名化されたIPアドレスはGoogle アナリティクスの分析機能を通じてアクセス元の地域分布（国、州・都道府県、都市）を把握するために、それぞれ利用されています。'
+          )
+        }}
+      </p>
+      <p>
+        {{
+          $t(
+            'Google アナリティクスの利用規約及びプライバシーポリシーに関する説明については、Google アナリティクスのサイトをご覧ください。'
+          )
+        }}
+      </p>
+      <ul>
+        <li>
+          <a
+            :href="
+              $t(
+                'https://marketingplatform.google.com/about/analytics/terms/jp/'
+              )
+            "
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ $t('Google アナリティクス利用規約') }}
+          </a>
+        </li>
+        <li>
+          <a
+            :href="$t('https://policies.google.com/privacy?hl=ja')"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ $t('Googleのプライバシーポリシー') }}
+          </a>
+        </li>
+        <li>
+          <a
+            :href="
+              $t('https://support.google.com/analytics/answer/6004245?hl=ja')
+            "
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ $t('Google アナリティクスに関する詳細情報') }}
+          </a>
+        </li>
+      </ul>
+      <i18n
+        tag="p"
+        path="Google アナリティクスによる情報送信を回避する場合は、Google がサポートする{addon}をご利用ください。"
+      >
+        <template v-slot:addon>
+          <a
+            :href="$t('https://tools.google.com/dlpage/gaoptout?hl=ja')"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ $t('測定を無効にするブラウザ アドオン') }}
+          </a>
+        </template>
+      </i18n>
+    </StaticCard>
+    <StaticCard>
       <h3>{{ $t('免責事項') }}</h3>
       <p>
         {{
