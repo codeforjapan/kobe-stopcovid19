@@ -91,7 +91,8 @@ const config: Configuration = {
   buildModules: [
     '@nuxtjs/stylelint-module',
     '@nuxtjs/vuetify',
-    '@nuxt/typescript-build'
+    '@nuxt/typescript-build',
+    '@nuxtjs/google-analytics'
   ],
   /*
    ** Nuxt.js modules
@@ -114,6 +115,10 @@ const config: Configuration = {
     defaultAssets: {
       icons: false
     }
+  },
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID, // .env.production などに設定してください。
+    set: [{ field: 'anonymizeIp', value: true }] // IP anonymization
   },
   optionalCookies: [
     {

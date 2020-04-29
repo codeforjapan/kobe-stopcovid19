@@ -3,7 +3,7 @@
     <i18n tag="div" :class="$style.heading" path="{advisory}による相談結果">
       <template v-slot:advisory>
         <span :class="[$style.fzLarge, $style.break]">
-          {{ $t('新型コロナ受診相談窓口') }}
+          {{ $t('新型コロナ専用健康相談窓口') }}
         </span>
       </template>
     </i18n>
