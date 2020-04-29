@@ -1820,30 +1820,30 @@
             },
             {
                 "日付": "2020-04-29T08:00:00Z",
-                "小計": 0
+                "小計": 29
             }
         ]
     },
-    "lastUpdate": "2020/04/29 20:03",
+    "lastUpdate": "2020/04/29 21:05",
     "main_summary": {
         "attr": "患者発生総数",
         "value": 256,
         "children": [
             {
                 "attr": "調査済患者総数",
-                "value": 242,
+                "value": 248,
                 "children": [
                     {
                         "attr": "入院中",
-                        "value": 130,
+                        "value": 134,
                         "children": [
                             {
                                 "attr": "軽症・中等症",
-                                "value": 121
+                                "value": 124
                             },
                             {
                                 "attr": "重症",
-                                "value": 9
+                                "value": 10
                             }
                         ]
                     },
@@ -1853,7 +1853,7 @@
                     },
                     {
                         "attr": "治癒確認",
-                        "value": 108
+                        "value": 110
                     }
                 ]
             }
