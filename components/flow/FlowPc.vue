@@ -52,7 +52,7 @@
         >
           <template v-slot:advisory>
             <span :class="$style.TitleLarge">
-              {{ $t('新型コロナ受診相談窓口') }}
+              {{ $t('新型コロナ専用健康相談窓口') }}
             </span>
           </template>
         </i18n>
