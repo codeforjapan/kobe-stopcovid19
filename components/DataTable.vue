@@ -1,7 +1,9 @@
 <template>
   <data-view :title="title" :title-id="titleId" :date="date">
     <template v-slot:button>
-      <span />
+      <ul class="note">
+        <li>{{ desc }}</li>
+      </ul>
     </template>
     <v-data-table
       :ref="'displayedTable'"
@@ -25,7 +27,7 @@
       />
     </template>
     <template v-slot:footer>
-      <open-data-link :url="url" />
+      <open-data-link :url="url" :source="source" />
     </template>
   </data-view>
 </template>
@@ -81,9 +83,15 @@
 }
 
 .note {
-  padding: 8px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding-left: 0 !important;
   font-size: 12px;
   color: $gray-3;
+
+  > li {
+    list-style-type: none;
+  }
 }
 </style>
 
@@ -118,6 +126,16 @@ export default Vue.extend({
     },
     url: {
       type: String,
+      default: ''
+    },
+    source: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    desc: {
+      type: String,
+      required: false,
       default: ''
     }
   },
