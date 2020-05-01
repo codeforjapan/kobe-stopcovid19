@@ -10,7 +10,8 @@
       :url="
         'https://www.city.kobe.lg.jp/a57337/kenko/health/corona_zokusei.html'
       "
-      :source="$t('オープンデータを入手')"
+      :source="$t('オープンデータを入手 (過去の発表分はこちらから)')"
+      :desc="$t('注）直近の発表分のみを表示')"
     />
   </v-col>
 </template>
