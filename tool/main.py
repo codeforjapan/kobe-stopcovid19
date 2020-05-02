@@ -142,7 +142,7 @@ class DataJson:
         # HTMLから最終更新日を取得する
         # last_update_str = [x.get_text() for x in self.patients_html.find_all("p") if "更新日" in x.get_text()][0][4:]
         # last_update = datetime.strptime(last_update_str, "%Y年%m月%d日").strftime("%Y/%m/%d %H:%M")
-        last_update = self. last_update
+        last_update = self.last_update
         # patientsを生成する
         self._patients_json = template_json(last_update)
 
