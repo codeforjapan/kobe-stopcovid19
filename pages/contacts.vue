@@ -112,11 +112,11 @@
               >
                 <template v-slot:pdf>
                   <a
-                    href="https://www.city.kobe.lg.jp/documents/31680/20200327ryuukouchiiki.pdf"
+                    href="https://www.city.kobe.lg.jp/documents/31680/0403ryukochiiki.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {{ $t('WHOの公表する流行地域（PDF：419KB）') }}
+                    {{ $t('WHOの公表する流行地域（PDF：277KB）') }}
                   </a>
                 </template>
               </i18n>
