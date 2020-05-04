@@ -94,10 +94,12 @@ class DataJson:
 
     def make_contacts(self) -> None:
         # 最終データの日の次の日を最終更新日とする
-        last_update = (
-            self.contacts_sheet.cell(row=self.contacts_count - 1, column=1).value +
-            timedelta(days=1)
-        ).strftime("%Y/%m/%d %H:%M")
+        # last_update = (
+        #     self.contacts_sheet.cell(row=self.contacts_count - 1, column=1).value +
+        #     timedelta(days=1)
+        # ).strftime("%Y/%m/%d %H:%M")
+        last_update = self.last_update
+
         # contacts_summaryとhealth_center_summaryを同時に生成する。
         # スクリプト実行時間短縮のため、同時に生成している。
         self._contacts_summary_json = template_json(last_update)
@@ -138,8 +140,9 @@ class DataJson:
 
     def make_patients(self) -> None:
         # HTMLから最終更新日を取得する
-        last_update_str = [x.get_text() for x in self.patients_html.find_all("p") if "更新日" in x.get_text()][0][4:]
-        last_update = datetime.strptime(last_update_str, "%Y年%m月%d日").strftime("%Y/%m/%d %H:%M")
+        # last_update_str = [x.get_text() for x in self.patients_html.find_all("p") if "更新日" in x.get_text()][0][4:]
+        # last_update = datetime.strptime(last_update_str, "%Y年%m月%d日").strftime("%Y/%m/%d %H:%M")
+        last_update = self.last_update
         # patientsを生成する
         self._patients_json = template_json(last_update)
 
@@ -187,10 +190,12 @@ class DataJson:
 
     def make_summaries(self) -> None:
         # 最終データの日の次の日を最終更新日とする
-        last_update = (
-            self.main_summary_sheet.cell(row=self.summary_count - 1, column=1).value +
-            timedelta(days=1)
-        ).strftime("%Y/%m/%d %H:%M")
+        # last_update = (
+        #     self.main_summary_sheet.cell(row=self.summary_count - 1, column=1).value +
+        #     timedelta(days=1)
+        # ).strftime("%Y/%m/%d %H:%M")
+        last_update = self.last_update
+
         # patients_summaryとinspections_summaryを同時に生成する
         # スクリプト実行時間短縮のため、同時に生成している。
         self._patients_summary_json = template_json(last_update)

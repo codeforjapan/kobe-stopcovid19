@@ -28,7 +28,7 @@
           <div>
             <a class="Permalink" :href="permalink()">
               <time :datetime="formattedDate">
-                {{ $t('{date} 更新', { date }) }}
+                {{ $t('{date} 時点', { date }) }}
               </time>
             </a>
           </div>
@@ -139,7 +139,7 @@
         {{ $t('埋め込みコードをコピーしました') }}
       </div>
       <v-footer class="DataView-Footer">
-        <time :datetime="date">{{ $t('{date} 更新', { date }) }}</time>
+        <time :datetime="date">{{ $t('{date} 時点', { date }) }}</time>
         <slot name="footer" />
       </v-footer>
     </div>
