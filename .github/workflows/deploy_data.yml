@@ -22,6 +22,13 @@ jobs:
       - name: Run script
         run: |
           python tool/main.py
+        env:
+          REALM: ${{ secrets.REALM }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+          REDIRECT_URL: ${{ secrets.REDIRECT_URL }}
+          SITE: ${{ secrets.SITE }}
       - name: Move xlsx files
         run: |
           mv data/*.xlsx static/data
