@@ -6,6 +6,7 @@ import time
 import os
 import copy
 
+from io import BytesIO
 from bs4 import BeautifulSoup
 from json import dumps
 from datetime import datetime, timedelta, timezone
@@ -14,6 +15,13 @@ from typing import Dict
 
 jst = timezone(timedelta(hours=9), 'JST')
 base_url = "https://www.city.kobe.lg.jp/"
+
+REALM = os.environ["REALM"]
+CLIENT_ID = os.environ["CLIENT_ID"]
+CLIENT_SECRET = os.environ["CLIENT_SECRET"]
+REFRESH_TOKEN = os.environ["REFRESH_TOKEN"]
+REDIRECT_URL = os.environ["REDIRECT_URL"]
+SITE = os.environ["SITE"]
 
 OLD_SUMMARY_INIT = {
     'attr': '検査実施人数',
@@ -140,3 +148,43 @@ def requests_xlsx(url: str) -> openpyxl.workbook.workbook.Workbook:
 def dumps_json(file_name: str, json_data: Dict) -> None:
     with codecs.open("./data/" + file_name, "w", "utf-8") as f:
         f.write(dumps(json_data, ensure_ascii=False, indent=4, separators=(',', ': ')))
+
+
+def get_shere_point_token() -> str:
+    url = f"https://accounts.accesscontrol.windows.net/{REALM}.onmicrosoft.com/tokens/OAuth/2"
+    headers = {"Accept": "application/json; odata=verbose", }
+    data = {
+        "grant_type": "refresh_token",
+        "client_id": f"{CLIENT_ID}@{REALM}.onmicrosoft.com",
+        "client_secret": CLIENT_SECRET,
+        "refresh_token": REFRESH_TOKEN,
+        "redirect_uri": REDIRECT_URL,
+        "resource": f"00000003-0000-0ff1-ce00-000000000000/{REALM}.sharepoint.com@{REALM}.onmicrosoft.com"
+    }
+
+    try:
+        return requests.post(url, headers=headers, data=data).json()["access_token"]
+    except Exception:
+        raise Exception("Failed get access_token...")
+
+
+def requests_xlsx_from_shere_point(token: str, file_name: str) -> openpyxl.workbook.workbook.Workbook:
+    url = f"https://{REALM}.sharepoint.com/{SITE}/_api/web/GetFileByServerRelativePath(decodedurl=\'/sites/covid19-kobe/Shared%20Documents/{file_name}\')/$value"
+    headers = {
+        "Accept": "application/json; odata=verbose",
+        "Authorization": f"Bearer {token}"
+    }
+    failed_count = 0
+    status_code = 404
+    while not status_code == 200:
+        try:
+            res = requests.get(url, stream=True, headers=headers)
+            status_code = res.status_code
+        except Exception:
+            if failed_count >= 5:
+                raise Exception(f"Failed get xlsx file from \"{url}\"!")
+            print_log("request", f"Failed get xlsx file from \"{url}\". retrying...")
+            failed_count += 1
+            time.sleep(5)
+    file_bin = res.content
+    return openpyxl.load_workbook(BytesIO(file_bin))

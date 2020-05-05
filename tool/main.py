@@ -1,4 +1,5 @@
-from util import OLD_SUMMARY_INIT, SUMMARY_INIT, dumps_json, requests_html, get_xlsx, make_data, template_json, jst
+from util import (OLD_SUMMARY_INIT, SUMMARY_INIT, dumps_json, requests_html, get_xlsx, make_data, template_json,
+                  jst, get_shere_point_token, requests_xlsx_from_shere_point, excel_date)
 import config
 
 from datetime import datetime, timedelta
@@ -7,6 +8,7 @@ from typing import Dict, List
 summary_first_cell = 2
 all_summary_first_cell = 2
 contacts_first_cell = 2
+news_first_cell = 2
 
 
 class DataJson:
@@ -24,10 +26,13 @@ class DataJson:
             self.all_summary_sheet = self.summary_xlsx["all"]
         except Exception:
             pass
+        token = get_shere_point_token()
+        self.news_sheet = requests_xlsx_from_shere_point(token, "whatsnew.xlsx")["Sheet1"]
         # self.inspections_count = 4
         self.contacts_count = contacts_first_cell
         self.summary_count = summary_first_cell
         self.all_summary_count = all_summary_first_cell
+        self.news_count = news_first_cell
         self.main_summary_values = []
         self.last_update = datetime.today().astimezone(jst).strftime("%Y/%m/%d %H:%M")
         self._data_json = {}
@@ -38,11 +43,13 @@ class DataJson:
         self._patients_summary_json = {}
         self._inspections_summary_json = {}
         self._main_summary_json = {}
+        self._news_json = {}
         # 初期化
         # self.get_inspections()
         self.get_contacts()
         self.get_summary_count()
         self.get_all_summary_count()
+        self.get_news_count()
 
     def data_json(self) -> Dict:
         # 内部変数にデータが保管されているか否かを確認し、保管されていなければ生成し、返す。
@@ -80,6 +87,11 @@ class DataJson:
         if not self._main_summary_json:
             self.make_main_summary()
         return self._main_summary_json
+
+    def news_json(self) -> Dict:
+        if not self._news_json:
+            self.make_news()
+        return self._news_json
 
     def make_data(self) -> None:
         self._data_json = {
@@ -271,6 +283,21 @@ class DataJson:
     #         if value is None:
     #             break
 
+    def make_news(self) -> None:
+        # newsの生成
+        self._news_json = {
+            "newsItems": []
+        }
+
+        for i in range(news_first_cell, self.news_count):
+            self._news_json["newsItems"].append(
+                {
+                    "date": excel_date(self.news_sheet.cell(row=i, column=2).value).strftime("%Y/%m/%d"),
+                    "text": self.news_sheet.cell(row=i, column=3).value,
+                    "url": self.news_sheet.cell(row=i, column=4).value
+                }
+            )
+
     def get_contacts(self) -> None:
         # 何行分相談数のデータがあるかを取得
         while self.contacts_sheet:
@@ -295,6 +322,16 @@ class DataJson:
             if not value:
                 break
 
+    def get_news_count(self) -> None:
+        # 何行分ニュースデータがあるかを取得
+        while self.news_sheet:
+            self.news_count += 1
+            value = self.news_sheet.cell(row=self.news_count, column=2).value
+            if not value:
+                break
+
 
 if __name__ == '__main__':
-    dumps_json("data.json", DataJson().data_json())
+    data_json = DataJson()
+    dumps_json("data.json", data_json.data_json())
+    dumps_json("news.json", data_json.news_json())
