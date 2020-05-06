@@ -1,19 +1,24 @@
 {
     "newsItems": [
         {
-            "date": "2020/04/22",
-            "url": "https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/corona_shien.html",
-            "text": "新型コロナ対策神戸市支援総合サイトが開設しました。"
+            "date": "2020/05/01",
+            "text": "特別定額給付金の受付を開始しました",
+            "url": "https://www.city.kobe.lg.jp/a06448/kyufukin/kyufukin.html"
+        },
+        {
+            "date": "2020/04/28",
+            "text": "新型コロナウイルス感染症拡大防止に向けた公園利用について",
+            "url": "https://www.city.kobe.lg.jp/a53501/kurashi/machizukuri/park/corona/coronaindex.html"
+        },
+        {
+            "date": "2020/04/24",
+            "text": "医療従事者を支援する「神戸医療者応援ファンド」を設立しました",
+            "url": "http://kmsf.jp/"
         },
         {
             "date": "2020/04/22",
-            "url": "https://www.city.kobe.lg.jp/a84453/20200406ann1.html",
-            "text": "区役所への来庁を控えて外出の自粛にご協力ください（郵送手続・電子申請などのご案内）"
-        },
-        {
-            "date": "2020/04/21",
-            "url": "https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/corona/corona_gaiyo.html",
-            "text": "医療物資に関する事業者・市民の皆さまへの提供協力のお願い"
+            "text": "区役所への来庁を控えて外出の自粛にご協力ください（郵送手続・電子申請などのご案内）",
+            "url": "https://www.city.kobe.lg.jp/a84453/20200406ann1.html"
         }
     ]
 }
