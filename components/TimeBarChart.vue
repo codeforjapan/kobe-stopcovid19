@@ -1,7 +1,7 @@
 <template>
   <data-view :title="title" :title-id="titleId" :date="date">
     <template v-slot:description>
-      <slot name="description" />
+      {{ desc }}
     </template>
     <template v-slot:button>
       <data-selector
@@ -115,6 +115,7 @@ type Props = {
   date: string
   unit: string
   url: string
+  desc: string
 }
 
 const options: ThisTypedComponentOptionsWithRecordProps<
@@ -159,6 +160,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     url: {
       type: String,
+      default: ''
+    },
+    desc: {
+      type: String,
+      required: false,
       default: ''
     }
   },
