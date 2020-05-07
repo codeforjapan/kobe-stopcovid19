@@ -31,6 +31,7 @@
       :url="
         'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html#shinaijokyo'
       "
+      :desc="$t('注）集計中は0人と表示されます')"
     />
   </v-col>
 </template>
