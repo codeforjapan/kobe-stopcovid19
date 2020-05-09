@@ -1,6 +1,11 @@
 {
     "newsItems": [
         {
+            "date": "2020/05/09",
+            "text": "新型コロナウイルス感染症についての相談・受診の目安が変更されました。（本サイト内ページの修正はしばらくお待ちください）",
+            "url": "https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus.html#soudansaki"
+        },
+        {
             "date": "2020/05/01",
             "text": "特別定額給付金の受付を開始しました",
             "url": "https://www.city.kobe.lg.jp/a06448/kyufukin/kyufukin.html"
