@@ -219,6 +219,11 @@ class DataJson:
             patients = self.main_summary_sheet.cell(row=i, column=4).value
             # 検査人数を取得する
             inspections = self.main_summary_sheet.cell(row=i, column=2).value
+            # Excelのセル内に0すら入っていないときはNoneが返ってくるので、0を代入しなおす。
+            if patients is None:
+                patients = 0
+            if inspections is None:
+                inspections = 0
             self._patients_summary_json["data"].append(make_data(date.isoformat() + "Z", patients))
             self._inspections_summary_json["data"].append(make_data(date.isoformat() + "Z", inspections))
 
