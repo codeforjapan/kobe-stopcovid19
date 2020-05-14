@@ -3,9 +3,11 @@
     <div :class="$style.FirstSectionWrapper">
       <h3>{{ $t('新型コロナウイルス感染症にかかる相談窓口について') }}</h3>
       <div :class="[$style.Outer, $style.OuterUpper]">
-        <div :class="[$style.CardBlock, $style.Past]">
+        <div
+          :class="[$style.CardBlock, $style.CardBlockGeneral, $style.General]"
+        >
           <div :class="[$style.CardBlockInner]">
-            <flow-pc-past />
+            <flow-pc-general />
             <img
               :class="$style.CardBlockIcon"
               src="/flow/flow_arrow.svg"
@@ -14,9 +16,9 @@
             />
           </div>
         </div>
-        <div :class="[$style.CardBlock, $style.Days]">
+        <div :class="[$style.CardBlock, $style.CardBlockElder, $style.Elder]">
           <div :class="[$style.CardBlockInner]">
-            <flow-pc-days />
+            <flow-pc-elder />
             <img
               :class="$style.CardBlockIcon"
               src="/flow/flow_arrow.svg"
@@ -113,8 +115,8 @@
 </template>
 
 <script>
-import FlowPcPast from './FlowPcPast.vue'
-import FlowPcDays from './FlowPcDays.vue'
+import FlowPcGeneral from './FlowPcGeneral.vue'
+import FlowPcElder from './FlowPcElder.vue'
 import FlowPcSuspect from './FlowPcSuspect.vue'
 import FlowPcAdvisory from './FlowPcAdvisory.vue'
 import FlowPcRequired from './FlowPcRequired.vue'
@@ -124,8 +126,8 @@ import FlowPcHospitalized from './FlowPcHospitalized.vue'
 
 export default {
   components: {
-    FlowPcPast,
-    FlowPcDays,
+    FlowPcGeneral,
+    FlowPcElder,
     FlowPcSuspect,
     FlowPcAdvisory,
     FlowPcRequired,
@@ -278,6 +280,8 @@ export default {
     z-index: 1;
   }
 
+  &General,
+  &Elder,
   &Suspect {
     .CardBlockIcon {
       bottom: 40%;
@@ -319,12 +323,12 @@ export default {
   }
 }
 
-.Past {
+.General {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
 }
 
-.Days {
+.Elder {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
 }
