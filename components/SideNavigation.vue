@@ -154,12 +154,14 @@ export default Vue.extend({
         {
           icon: 'mdi-shield-alert',
           title: this.$t('感染症対策について'),
-          link: this.localePath('/guide')
+          link:
+            'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus_houshin_taisaku.html'
         },
         {
           icon: 'mdi-phone-in-talk',
           title: this.$t('神戸市電話相談窓口'),
-          link: this.localePath('/contacts')
+          link:
+            'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus.html#soudansaki'
         },
         {
           icon: 'mdi-message-text',
