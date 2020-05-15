@@ -28,9 +28,7 @@
       :chart-data="inspectionsGraph"
       :date="Data.inspections_summary.date"
       :unit="$t('人')"
-      :url="
-        'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html#shinaijokyo'
-      "
+      :url="'https://data.city.kobe.lg.jp/data/dataset/32576-7-5-0-4'"
       :desc="$t('注）集計中は0人と表示されます')"
     />
   </v-col>
