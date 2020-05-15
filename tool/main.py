@@ -1,5 +1,5 @@
-from util import (OLD_SUMMARY_INIT, SUMMARY_INIT, dumps_json, requests_html, get_xlsx, make_data, template_json,
-                  jst, get_shere_point_token, requests_xlsx_from_shere_point, excel_date)
+from util import (OLD_SUMMARY_INIT, SUMMARY_INIT, dumps_json, requests_html, requests_xlsx, make_data,
+                  template_json, jst, get_shere_point_token, requests_xlsx_from_shere_point, excel_date)
 import config
 
 from datetime import datetime, timedelta
@@ -13,11 +13,11 @@ news_first_cell = 2
 
 class DataJson:
     def __init__(self):
-        self.contacts_sheet = get_xlsx(config.main_page, 1)["相談件数"]
+        self.contacts_sheet = requests_xlsx(config.contacts_xlsx)["相談件数"]
         self.patients_html = requests_html("/a57337/kenko/health/corona_zokusei.html")
         # self.inspections_sheet = get_xlsx(config.inspections_xlsx, "inspections.xlsx")["検査件数・陽性患者"]
         self.main_summary_html = requests_html("/a73576/kenko/health/infection/protection/covid_19.html")
-        self.summary_xlsx = get_xlsx(config.main_page)
+        self.summary_xlsx = requests_xlsx(config.main_summary_xlsx)
         self.main_summary_sheet = self.summary_xlsx["kobe"]
         # 神戸市のサイト形式変更に伴い、self.summary_xlsxに"all"シートが追加され、これが使えるようになるので、
         # allが取得できるようになり次第、自動で切り替えるようにする
