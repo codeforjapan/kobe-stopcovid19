@@ -20,8 +20,6 @@ export default Vue.extend({})
 
 <style lang="scss" scoped>
 .Suspended {
-  margin-top: 2rem;
-
   &Heading {
     display: block;
     font-size: 1.875rem;
