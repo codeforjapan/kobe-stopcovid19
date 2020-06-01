@@ -7,7 +7,9 @@ export default {
   defaultLocale: 'ja',
   vueI18n: {
     fallbackLocale: 'ja',
-    formatFallbackMessages: true
+    formatFallbackMessages: true,
+    silentTranslationWarn: true,
+    silentFallbackWarn: true
   },
   // vueI18nLoader: true,
   lazy: true,
