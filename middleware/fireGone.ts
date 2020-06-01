@@ -1,10 +1,10 @@
 import { Middleware } from '@nuxt/types'
 
 const fireGone: Middleware = ({ route, error }) => {
+  console.info(route)
   const pagesGone = [
     '/contacts',
-    '/flow', // なぜか/flow/ にリダイレクトされるが一応追加しておく
-    '/flow/',
+    '/flow',
     '/guide',
     '/print/flow',
     '/cards/details-of-confirmed-cases',
@@ -15,7 +15,7 @@ const fireGone: Middleware = ({ route, error }) => {
     '/cards/number-of-reports-to-health-center-desk'
   ]
 
-  if (pagesGone.includes(route.fullPath)) {
+  if (pagesGone.some(page => route.path.includes(page))) {
     error({ statusCode: 410 })
   }
 }
