@@ -114,11 +114,11 @@ Pull Request を送る際の branch は、以下のネーミングルールで�
 | ---- | -------- | ---- | ---- |
 | 開発 | development | https://kobe-stopcovid19.netlify.com/ | base branch。基本はこちらに Pull Requestを送ってください |
 | ステージング | staging | 準備中 | 本番前の最終確認用。管理者以外の Pull Request は禁止です |
-| 本番 | master | https://stopcovid19.city.kobe.lg.jp/ | 管理者以外の Pull Request は禁止です |
+| 本番 | master | https://kobe.stopcovid19.jp/ | 管理者以外の Pull Request は禁止です |
 
 #### システムで利用しているブランチ
 | 目的 | ブランチ | 確認URL | 備考 |
 | ---- | -------- | ---- | ---- |
-| 本番サイトHTML | production | https://stopcovid19.city.kobe.lg.jp/ | 静的ビルドされたHTMLが置いてある場所 |
+| 本番サイトHTML | production | https://kobe.stopcovid19.jp/ | 静的ビルドされたHTMLが置いてある場所 |
 | ステージングサイト HTML | gh-pages | 準備中 | 静的ビルドされたHTMLが置いてある場所 |
 | OGP作業用 | deploy/new_ogp | なし | OGPの更新用 |
