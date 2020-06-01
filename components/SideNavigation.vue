@@ -147,53 +147,6 @@ export default Vue.extend({
           link: this.localePath('/')
         },
         {
-          icon: 'CovidIcon',
-          title: this.$t('新型コロナウイルス感染症が心配なときに'),
-          link: this.localePath('/flow')
-        },
-        {
-          icon: 'mdi-shield-alert',
-          title: this.$t('感染症対策について'),
-          link:
-            'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus_houshin_taisaku.html'
-        },
-        {
-          icon: 'mdi-phone-in-talk',
-          title: this.$t('神戸市電話相談窓口'),
-          link:
-            'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus.html#soudansaki'
-        },
-        {
-          icon: 'mdi-message-text',
-          title: this.$t('市長からのメッセージ'),
-          link:
-            'https://www.city.kobe.lg.jp/a57337/kenko/health/corona_shichokoment2.html',
-          divider: true
-        },
-        {
-          icon: 'ParentIcon',
-          title: this.$t('お子様をお持ちの皆さまへ'),
-          link:
-            'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/corona_kosodate.html'
-        },
-        {
-          icon: 'mdi-account-multiple',
-          title: this.$t('市民の皆さまへ'),
-          link:
-            'https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus.html'
-        },
-        {
-          icon: 'mdi-domain',
-          title: this.$t('企業の皆さま・働く皆さまへ'),
-          link:
-            'https://www.city.kobe.lg.jp/a31812/coronavsupportsforbusiness.html',
-          divider: true
-        },
-        {
-          title: this.$t('神戸市主催など中止または延期するイベント'),
-          link: 'https://www.city.kobe.lg.jp/a57337/kenko/eventtyushi.html'
-        },
-        {
           title: this.$t('当サイトについて'),
           link: this.localePath('/about')
         },

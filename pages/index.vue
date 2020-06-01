@@ -16,17 +16,17 @@
       </div>
     </div>
     <whats-new class="mb-4" :items="newsItems" />
-    <static-info
-      class="mb-4"
-      :url="localePath('/flow')"
-      :text="$t('自分や家族の症状に不安や心配があればまずは電話相談をどうぞ')"
-      :btn-text="$t('相談の手順を見る')"
-    />
-    <static-info
-      class="mb-4"
-      url="https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/coronavirus.html"
-      :text="$t('市民の皆さまへ')"
-    />
+    <div class="mb-4" style="margin-top:50px">
+      <p style="font-size:1.875rem;">
+        「新型コロナウイルス感染症対策サイト」は2020年6月1日より神戸市公式ホームページに統合しました。<br />
+      </p>
+      <p>
+        新URL：<a
+          href="https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html"
+          >https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html</a
+        >
+      </p>
+    </div>
     <v-row class="DataBlock">
       <confirmed-cases-details-card />
       <!--<tested-cases-details-card />-->
@@ -47,41 +47,20 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import PageHeader from '@/components/PageHeader.vue'
-import WhatsNew from '@/components/WhatsNew.vue'
-import StaticInfo from '@/components/StaticInfo.vue'
 import Data from '@/data/data.json'
 import News from '@/data/news.json'
-import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
 // import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
-import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
-import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
-import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
 // import InspectionPersonsNumberCard from '@/components/cards/InspectionPersonsNumberCard.vue'
-import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
 /*
 import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
 import MetroCard from '@/components/cards/MetroCard.vue'
 import AgencyCard from '@/components/cards/AgencyCard.vue'
  */
 import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
-import HealthCenterDeskReportsNumberCard from '@/components/cards/HealthCenterDeskReportsNumberCard.vue'
 
 export default Vue.extend({
   components: {
-    PageHeader,
-    WhatsNew,
-    StaticInfo,
-    ConfirmedCasesDetailsCard,
-    // TestedCasesDetailsCard,
-    ConfirmedCasesNumberCard,
-    ConfirmedCasesAttributesCard,
-    TestedNumberCard,
-    // InspectionPersonsNumberCard,
-    TelephoneAdvisoryReportsNumberCard,
-    /* ConsultationDeskReportsNumberCard,
-    MetroCard,
-    AgencyCard, */
-    HealthCenterDeskReportsNumberCard
+    PageHeader
   },
   data() {
     const data = {
