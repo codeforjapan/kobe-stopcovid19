@@ -168,36 +168,7 @@ const config: Configuration = {
     splash_pages: null
   },
   generate: {
-    fallback: true,
-    routes() {
-      const locales = ['ja']
-      const pages = [
-        '/cards/details-of-confirmed-cases',
-        // '/cards/details-of-tested-cases',
-        '/cards/number-of-confirmed-cases',
-        '/cards/attributes-of-confirmed-cases',
-        '/cards/number-of-tested',
-        // '/cards/number-of-inspection-persons',
-        // '/cards/number-of-reports-to-returnee-contact-center',
-        '/cards/number-of-reports-to-health-consultation-desk',
-        /* '/cards/predicted-number-of-toei-subway-passengers',
-        '/cards/agency', */
-        '/cards/number-of-reports-to-health-center-desk'
-      ]
-
-      const routes: string[] = []
-      locales.forEach(locale => {
-        pages.forEach(page => {
-          if (locale === 'ja') {
-            routes.push(page)
-            return
-          }
-          const route = `/${locale}${page}`
-          routes.push(route)
-        })
-      })
-      return routes
-    }
+    fallback: true
   },
   // /*
   // ** hot read configuration for docker
