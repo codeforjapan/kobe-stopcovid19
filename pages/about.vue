@@ -3,6 +3,8 @@
     <page-header class="mb-3">
       {{ $t('当サイトについて') }}
     </page-header>
+    <suspended />
+
     <StaticCard>
       {{
         $t(
@@ -243,11 +245,13 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import PageHeader from '@/components/PageHeader.vue'
 import StaticCard from '@/components/StaticCard.vue'
+import Suspended from '@/components/Suspended.vue'
 
 export default Vue.extend({
   components: {
     PageHeader,
-    StaticCard
+    StaticCard,
+    Suspended
   },
   head(): MetaInfo {
     return {
