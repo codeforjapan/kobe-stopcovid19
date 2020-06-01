@@ -177,6 +177,9 @@ const config: Configuration = {
     webpack: {
       poll: true
     }
+  },
+  router: {
+    middleware: 'fireGone'
   }
 }
 
