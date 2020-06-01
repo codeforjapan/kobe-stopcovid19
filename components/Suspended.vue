@@ -1,8 +1,8 @@
 <template>
-  <div class="mb-4" style="margin-top:50px">
-    <p style="font-size:1.875rem;">
-      「新型コロナウイルス感染症対策サイト」は2020年6月1日より神戸市公式ホームページに統合しました。<br />
-    </p>
+  <div class="mb-4 Suspended">
+    <strong class="SuspendedHeading">
+      「新型コロナウイルス感染症対策サイト」は2020年6月1日より神戸市公式ホームページに統合しました。
+    </strong>
     <p>
       新URL：<a
         href="https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html"
@@ -14,13 +14,23 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// import StaticCard from '@/components/StaticCard.vue'
 
-export default Vue.extend({
-  // components: { StaticCard }
-})
+export default Vue.extend({})
 </script>
 
-<style lang="scss">
-// aaa
+<style lang="scss" scoped>
+.Suspended {
+  margin-top: 2rem;
+
+  &Heading {
+    display: block;
+    font-size: 1.875rem;
+    margin-bottom: 16px;
+  }
+
+  a {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+}
 </style>
