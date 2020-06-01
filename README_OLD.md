@@ -1,4 +1,4 @@
-# 神戸市 新型コロナウイルス感染症対策サイト
+# 【運用終了】神戸市 新型コロナウイルス感染症対策サイト / Repository Archived - No Further Update
 
 ---
 
