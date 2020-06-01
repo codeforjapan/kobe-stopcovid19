@@ -1,7 +1,6 @@
 import { Middleware } from '@nuxt/types'
 
 const fireGone: Middleware = ({ route, error }) => {
-  console.info(route)
   const pagesGone = [
     '/contacts',
     '/flow',
