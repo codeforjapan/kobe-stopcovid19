@@ -5,17 +5,7 @@
         {{ headerItem.title }}
       </page-header>
     </div>
-    <div class="mb-4" style="margin-top:50px">
-      <p style="font-size:1.875rem;">
-        「新型コロナウイルス感染症対策サイト」は2020年6月1日より神戸市公式ホームページに統合しました。<br />
-      </p>
-      <p>
-        新URL：<a
-          href="https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html"
-          >https://www.city.kobe.lg.jp/a73576/kenko/health/infection/protection/covid_19.html</a
-        >
-      </p>
-    </div>
+    <suspended />
   </div>
 </template>
 
@@ -23,10 +13,12 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import PageHeader from '@/components/PageHeader.vue'
+import Suspended from '@/components/Suspended.vue'
 
 export default Vue.extend({
   components: {
-    PageHeader
+    PageHeader,
+    Suspended
   },
   data() {
     const data = {
