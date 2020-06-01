@@ -1,5 +1,7 @@
 # 【運用終了】神戸市 新型コロナウイルス感染症対策サイト / Repository Archived - No Further Update
 
+以下は旧README.mdの内容です。
+
 ---
 
 [![神戸市 新型コロナウイルス感染症対策サイト](https://raw.githubusercontent.com/codeforjapan/kobe-stopcovid19/development/static/ogp.png)](https://github.com/codeforjapan/kobe-stopcovid19/)
